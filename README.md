@@ -6,5 +6,19 @@ Angular CLI Version: 16.1.8
 
 ```
 ng serve
-python main.py
+python main.py dev
+```
+
+## Further Instructions
+
+To start VE:
+
+```
+./venv/Scripts/Activate.ps1
+```
+
+To deactivate VE:
+
+```
+deactivate
 ```

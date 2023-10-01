@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    eel.get_data()().then((res: any) => console.log(res));
-  }
+  ngOnInit(): void {}
 }
 
 export const eel = (window as any).eel;
