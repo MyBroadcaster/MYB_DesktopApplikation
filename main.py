@@ -1,13 +1,17 @@
 import eel
+import psutil
 
 @eel.expose
 def say_hello(name):
   print(f"Hello {name}!")
   return "Hello"
 
-
-def test():
-    print("hallo")
+@eel.expose
+def processlist():
+    processlist=list()
+    for process in psutil.process_iter():
+        processlist.append(process.name())
+    return processlist
 
 @eel.expose
 def threadstart():
@@ -21,7 +25,7 @@ def get_data():
 def start_eel(dev):
     if dev:
         directory = "src"
-        page = {"port": 4200}
+        page = "index.html"
     else:
         directory = "dist/angular-eel"
         page = "index.html"

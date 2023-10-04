@@ -9,8 +9,9 @@ import { eel } from 'src/app/app.component';
 
 export class DashboardComponent {
   async tryeel(){
-    let back = await eel.say_hello("test")();
+    let back = await eel.processlist()();
     console.log(back)
+    
   }
 
 
