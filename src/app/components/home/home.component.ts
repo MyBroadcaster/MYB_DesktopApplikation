@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-declare var myExtObject: any;
-declare var webGlObject: any;
 
 @Component({
   selector: 'app-home',
@@ -10,9 +8,4 @@ declare var webGlObject: any;
 
 export class HomeComponent implements OnInit {
   ngOnInit(): void {}
-  
-
-  callFunction1() {
-    myExtObject.func2();
-}
 }

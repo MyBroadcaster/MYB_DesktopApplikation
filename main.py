@@ -14,11 +14,23 @@ def say_hello(name):
   return "Hello"
 
 @eel.expose
-def processlist():
+def threadtest():
+    eel.spawn(processlist)
+
+@eel.expose
+def processlist_Scan():
     processlist=list()
     for process in psutil.process_iter():
         processlist.append(process.name())
     return processlist
+
+def processlist():
+    while True:
+        eel.sleep(1)
+        processlist=list()
+        for process in psutil.process_iter():
+            processlist.append(process.name())
+        print(processlist)
 
 @eel.expose
 def getautodb():

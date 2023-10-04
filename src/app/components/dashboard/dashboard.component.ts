@@ -10,9 +10,12 @@ import { eel } from 'src/app/app.component';
 
 export class DashboardComponent {
 
-  apps : any;
   async tryeel(){
-    let back = await eel.processlist()();
+    let back = await eel.processlist_Scan()();
+    console.log(back)
+  }
+  async threading(){
+    let back = await eel.threadtest()();
     console.log(back)
   }
   async autoBotDb(){
