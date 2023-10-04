@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TableModule } from 'primeng/table';
 import { SidebarComponent } from './components/basic/sidebar/sidebar.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SidebarComponent } from './components/basic/sidebar/sidebar.component';
     ButtonModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

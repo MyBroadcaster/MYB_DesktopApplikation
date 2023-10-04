@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { eel } from 'src/app/app.component';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,10 +9,19 @@ import { eel } from 'src/app/app.component';
 })
 
 export class DashboardComponent {
+
+  apps : any;
   async tryeel(){
     let back = await eel.processlist()();
     console.log(back)
-    
+  }
+  async autoBotDb(){
+    let apps = await eel.getautodb()();
+    console.log(apps)
+  }
+  async twitchlogin(){
+    let back = await eel.tw_Login()();
+    console.log(back)
   }
 
 
