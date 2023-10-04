@@ -9,6 +9,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {}
 }
 
-export const eel = (window as any).eel;
-eel.set_host("ws://localhost:4200");
-console.log(eel);
+export const eel = (window as any).eel
+eel.set_host( 'ws://localhost:8000' )

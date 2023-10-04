@@ -32,9 +32,9 @@ navItems.forEach((navItem) => {
 });
   }
 
-  btnClick(site: string) {
-    this.router.navigateByUrl(site);};
-
+  btnClick(item: any) {
+    this.router.navigate([item.path])
+  }
     menueitems = [
       {
         name: 'Dashboard',
@@ -63,5 +63,3 @@ navItems.forEach((navItem) => {
       },
     ];
 }
-export const eel = (window as any).eel;
-eel.set_host("ws://localhost:4200");

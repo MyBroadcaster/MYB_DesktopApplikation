@@ -19,11 +19,13 @@
                     MENÜ
                 </div>
                 <ul>
-                    <ng-container *ngFor="let item of menueitems; let i = index">                     
+                    <ng-container *ngFor="let item of menueitems; let i = index">
+                        <a (click)="btnClick(item)">   
                         <li class="nav-item">
-                            <i class="{{item.icon}}"></i>
-                            <span>{{item.name}}</span>
-                        </li>
+                              <i class="{{item.icon}}"></i>
+                              <span>{{item.name}}</span>
+                          </li>
+                        </a>
                     </ng-container>
                 </ul>
                 <hr>
