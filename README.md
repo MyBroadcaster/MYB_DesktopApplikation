@@ -15,6 +15,9 @@ Install and activate VE:
 ```
 py -m venv .venv
 .venv/Scripts/Activate.ps1
+OR
+run venv.bat (Requirements install not required)
+.venv/Scripts/Activate.ps1
 ```
 
 
