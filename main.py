@@ -2,9 +2,8 @@ import asyncio
 import eel
 import psutil
 from twitchAPI.helper import first
-from twitchAPI.oauth import refresh_access_token,UserAuthenticator
+from twitchAPI.oauth import refresh_access_token,UserAuthenticator,AuthScope
 from twitchAPI.twitch import Twitch
-from twitchAPI.types import AuthScope
 import conf
 from SQL import autobot_sql
 
