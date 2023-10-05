@@ -10,12 +10,21 @@ python main.py dev
 ```
 
 ## Further Instructions
-
-To start VE:
+Install and activate VE:
 
 ```
-./venv/Scripts/Activate.ps1
+py -m venv .venv
+.venv/Scripts/Activate.ps1
 ```
+
+
+Install Requirments
+
+```
+pip install -r requirements.txt
+```
+
+
 
 To deactivate VE:
 
