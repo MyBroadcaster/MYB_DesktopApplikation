@@ -61,5 +61,10 @@ navItems.forEach((navItem) => {
         path: '',
         icon: 'bx bxs-cog'
       },
+      {
+        name: 'Testing',
+        path: '/testing',
+        icon: 'bx bx-code-alt'
+      },
     ];
 }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<header>
+</header>
+<body>
+    <div>
+        <h1>Testing</h1>
+<p-accordion id="testingaccordion" [activeIndex]="0">
+    <p-accordionTab header="Systemprozesse">
+        <div style="margin-bottom: 20px;">
+        <p-button (click)="tryeel()">Prozesse Scannen</p-button>
+    </div>
+        <p-table 
+        [value]="listarray" 
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50, 100]" >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let head of header; let i = index">
+                        {{head}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-listarray>
+                <tr>
+                    <ng-container *ngIf="header.length == 1; then coursesList; else noCourses">
+                    </ng-container>
+                   
+                   <ng-template #coursesList>
+                    <td>{{ listarray }}</td>
+                   </ng-template>
+                   <ng-template #noCourses>
+                    <td *ngFor="let apps of listarray; let i = index"> 
+                        {{ apps }}
+                    </td>
+                  </ng-template>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-table>
+    </p-accordionTab>
+    <p-accordionTab header="Datenbank">
+        <div style="margin-bottom: 20px;">
+        <p-button (click)="autoBotDb()">Get all Data</p-button>
+        <input style="margin-left: 15px; margin-right: 15px;" id="dbinput" type="text" pInputText/>
+        <p-button (click)="autoBotDb_Specific()">Get spezific Data</p-button>
+        </div>
+        <p-table 
+        [value]="listarray" 
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50, 100]" >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let head of header; let i = index">
+                        {{head}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-listarray>
+                <tr>
+                    <ng-container *ngIf="header.length == 1; then coursesList; else noCourses">
+                    </ng-container>
+                   
+                   <ng-template #coursesList>
+                    <td>{{ listarray }}</td>
+                   </ng-template>
+                   <ng-template #noCourses>
+                    <td *ngFor="let apps of listarray; let i = index"> 
+                        {{ apps }}
+                    </td>
+                  </ng-template>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-table>
+    </p-accordionTab>
+    <p-accordionTab header="Twitch Login">
+        <div>
+        <p-button (click)="twitchlogin()">Twitch Login</p-button>
+        <div style="display: inline-block; margin-left: 10px;vertical-align: top;">
+        <a style="color: black;">Deine Credentials:</a>
+        <div><a style="color: black;">Oauth Token: {{oauth_token}}</a></div>
+            <div><a style="color: black;">Refresh Token: {{refresh_token}}</a></div>
+        </div>
+        </div>
+    </p-accordionTab>
+    <p-accordionTab header="Threading">
+        <div>
+        <p-button class="mr-3" id="Multithreading" [loading]="loading" [disabled]="loading" (click)="threading()">Threading</p-button>
+        <p-button id="Multithreading" [disabled]="actbtn" (click)="stopthread()" >Stop</p-button>
+    </div>
+    </p-accordionTab>
+</p-accordion>
+</div>
+</body>
+</html>

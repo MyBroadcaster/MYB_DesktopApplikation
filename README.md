@@ -34,3 +34,17 @@ To deactivate VE:
 ```
 deactivate
 ```
+
+
+## Build and Packaging
+Build Prod:
+
+```
+ng build
+```
+
+Convert to Exe:
+
+```
+python -m eel main.py dist/angular-eel --exclude win32com --exclude numpy --exclude cryptography --onefile --noconsole
+```

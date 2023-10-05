@@ -11,9 +11,13 @@ def autobot_dbconnect():
     return database
 
 
-def autobot_dbcall():
+def autobot_dbcall(item):
     connect = autobot_dbconnect()
     cursor = connect.cursor()
-    cursor.execute(f"SELECT * FROM `app_database`")
-    result = cursor.fetchall()
+    if item == "":
+        cursor.execute(f"SELECT * FROM `app_database`")
+        result = cursor.fetchall()
+    else:
+        cursor.execute(f'SELECT * FROM `app_database` WHERE ID LIKE "%{item}%" OR Prozess LIKE "%{item}%" OR Anwendung LIKE "%{item}%" OR Kategorie LIKE "%{item}%";')
+        result = cursor.fetchall()
     return result

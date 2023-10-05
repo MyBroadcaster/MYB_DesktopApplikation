@@ -7,6 +7,8 @@ from twitchAPI.twitch import Twitch
 import conf
 from SQL import autobot_sql
 
+threadloop = True
+
 @eel.expose
 def say_hello(name):
   print(f"Hello {name}!")
@@ -14,7 +16,14 @@ def say_hello(name):
 
 @eel.expose
 def threadtest():
+    global threadloop
+    threadloop = True
     eel.spawn(processlist)
+
+@eel.expose
+def stop_threadtest():
+    global threadloop
+    threadloop = False
 
 @eel.expose
 def processlist_Scan():
@@ -24,16 +33,19 @@ def processlist_Scan():
     return processlist
 
 def processlist():
-    while True:
+    print("Thread start!")
+    while threadloop:
         eel.sleep(1)
         processlist=list()
         for process in psutil.process_iter():
             processlist.append(process.name())
         print(processlist)
+    print("Thread stop!")
 
 @eel.expose
-def getautodb():
-    callback = autobot_sql.autobot_dbcall()
+def getautodb(item):
+    print(item)
+    callback = autobot_sql.autobot_dbcall(item)
     return callback
 
 @eel.expose
