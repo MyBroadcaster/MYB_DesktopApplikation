@@ -7,14 +7,6 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 100vh;
-    background-image: url('https://4kwallpapers.com/images/walls/thumbs_2t/9192.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'Roboto', sans-serif;
-}
-
 .sidebar {
     width: 120px;
     height: 200%;
@@ -42,10 +34,12 @@ body {
 .sidebar .logo img {
     width: 56px;
     transition: .4s;
+    border-radius: 90px;
 }
 
 .sidebar.open .logo img {
     width: 96px;
+    margin-right: 0%;
 }
 
 .sidebar .logo h3 {

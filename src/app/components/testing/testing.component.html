@@ -9,6 +9,7 @@
     <p-accordionTab header="Systemprozesse">
         <div style="margin-bottom: 20px;">
         <p-button (click)="tryeel()">Prozesse Scannen</p-button>
+        <a style="margin-left: 30px; color: white; float: right;">Prozesse Insgesamt: {{listarray_leng}}</a>
     </div>
         <p-table 
         [value]="listarray" 
@@ -53,6 +54,7 @@
         <p-button (click)="autoBotDb()">Get all Data</p-button>
         <input style="margin-left: 15px; margin-right: 15px;" id="dbinput" type="text" pInputText/>
         <p-button (click)="autoBotDb_Specific()">Get spezific Data</p-button>
+        <a style="margin-left: 30px; color: white; float: right;">Datensätze Insgesamt: {{listarray_leng}}</a>
         </div>
         <p-table 
         [value]="listarray" 
@@ -94,7 +96,7 @@
     </p-accordionTab>
     <p-accordionTab header="Twitch Login">
         <div>
-        <p-button (click)="twitchlogin()">Twitch Login</p-button>
+        <p-button [disabled]="login" (click)="twitchlogin()">Twitch Login</p-button>
         <div style="display: inline-block; margin-left: 10px;vertical-align: top;">
         <a style="color: black;">Deine Credentials:</a>
         <div><a style="color: black;">Oauth Token: {{oauth_token}}</a></div>
@@ -106,6 +108,12 @@
         <div>
         <p-button class="mr-3" id="Multithreading" [loading]="loading" [disabled]="loading" (click)="threading()">Threading</p-button>
         <p-button id="Multithreading" [disabled]="actbtn" (click)="stopthread()" >Stop</p-button>
+    </div>
+    </p-accordionTab>
+    <p-accordionTab header="Clear Data">
+        <div>
+        <p-button id="Multithreading" (click)="clearLocalStorage()" >Clear Local Storage</p-button>
+        <a style="color: white; margin-left: 20px;">Löscht alle Einträge. Neue Twitchanmeldung erforderlich!</a>
     </div>
     </p-accordionTab>
 </p-accordion>

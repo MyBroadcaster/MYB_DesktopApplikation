@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { eel } from 'src/app/app.component';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-testing',
@@ -8,22 +9,31 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
   styleUrls: ['./testing.component.scss']
 })
-export class TestingComponent {
-  constructor(private messageService: MessageService) {}
+export class TestingComponent implements OnInit {
+  constructor(private messageService: MessageService, private router: Router) {}
 
   listarray : any;
+  listarray_leng : any  = 0
   header : any;
   dbvalue: any = "";
-  oauth_token : string = ""
-  refresh_token : string = ""
+  oauth_token : any = localStorage.getItem("oauth_token")
+  refresh_token : any = localStorage.getItem("refresh_token")
   loading: boolean = false;
   actbtn: boolean = true;
+  login: boolean = false;
 
+  ngOnInit(): void {
+    console.log(!this.oauth_token)
+    if (this.oauth_token){
+      this.login = true
+    }
+  }
   async tryeel(){
     let back = await eel.processlist_Scan()();
     console.log(back)
     this.header = ["Prozesse"]
     this.listarray = back
+    this.listarray_leng = back.length
   }
   async threading(){
     let btntext = <HTMLTextAreaElement>document.getElementById("Multithreading")
@@ -33,6 +43,11 @@ export class TestingComponent {
     this.actbtn = false;
     console.log(btntext)
   }
+
+  clearLocalStorage(){
+    localStorage.clear();
+    this.router.navigate(['']);
+}
 
   async stopthread(){
     let btntext = <HTMLTextAreaElement>document.getElementById("Multithreading")
@@ -47,6 +62,7 @@ export class TestingComponent {
     let apps = await eel.getautodb("")();
     this.header = ["ID", "Executable", "Anwendung", "Kategorie","Window"]
     this.listarray = apps
+    this.listarray_leng = apps.length
     console.log(apps)
   }
 

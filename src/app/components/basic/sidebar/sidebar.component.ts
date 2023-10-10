@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { eel } from 'src/app/app.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,13 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss']
 })
 
+
 export class SidebarComponent implements OnInit {
+sidebarVisible: boolean = true;
   constructor(private router: Router) { }
+
   ngOnInit(): void {
+    
+    var twitch_logo = <HTMLImageElement>document.getElementById("twlogo");
+    var twitch_name = <HTMLHeadingElement>document.getElementById("twname");
+    var currentUser = localStorage.getItem('name') || '{}';
+    var currentpb_tw = localStorage.getItem("profilbild") || '{}';
+    twitch_logo.src = currentpb_tw 
+    twitch_name.innerHTML = currentUser
+
+    eel.expose(change_acc_info);
+    function change_acc_info(logo: string, name:string){
+      console.log(name, logo)
+      twitch_logo.src = logo
+      twitch_name.innerHTML = name
+    }
 
     const sidebar :any = document.querySelector(".sidebar");
     const navItems = document.querySelectorAll("nav .nav-item");
     const toggle :any = document.querySelector(".sidebar .toggle");
+    sidebar.classList.add("open")
 
 
 toggle.addEventListener("click", () => {
@@ -67,4 +86,5 @@ navItems.forEach((navItem) => {
         icon: 'bx bx-code-alt'
       },
     ];
+    
 }

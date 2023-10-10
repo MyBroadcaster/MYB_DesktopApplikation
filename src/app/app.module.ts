@@ -14,8 +14,8 @@ import { TestingComponent } from './components/testing/testing.component';
 import { AccordionModule } from 'primeng/accordion';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -23,19 +23,21 @@ import { ToastModule } from 'primeng/toast';
     HomeComponent,
     DashboardComponent,
     SidebarComponent,
-    TestingComponent
+    TestingComponent,
   ],
   imports: [
     BrowserModule,
     ToastModule,
     CommonModule,
+    SidebarModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
     ButtonModule,
     TableModule,
     InputTextModule,
-    AccordionModule
+    AccordionModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

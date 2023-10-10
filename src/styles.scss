@@ -37,21 +37,13 @@ $angular-eel-theme: mat.define-light-theme((
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import 'node_modules/primeflex/primeflex.css';
+@import "primeicons/primeicons.css";
 
 
-html,body {height: 100%; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-#sidebar{
-  margin: 0; 
-  padding: 0;
-  float: left;
-  height: auto;
-  padding-right: 30px;
-  z-index: 2;
-}
-#content {
-  z-index: 1;
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-}
+
+
+html,body {height: 100%; margin: 0px; padding: 0px; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);}
+
 #testingaccordion .p-accordion-header .p-accordion-header-link{
   background-color: #383838 !important;
   color: white;
@@ -63,5 +55,17 @@ html,body {height: 100%; margin: 0; font-family: Roboto, "Helvetica Neue", sans-
   background: -webkit-radial-gradient(circle, rgba(0,255,207,1) 0%, rgba(100,8,224,1) 100%);
   background: radial-gradient(circle, rgba(0,255,207,1) 0%, rgba(100,8,224,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffcf",endColorstr="#6408e0",GradientType=1);
-  margin-left: 100px!important;
+}
+
+#tw_login_btn .p-button{
+  background-color: #8f15cb !important;
+  -webkit-box-shadow: 1px 5px 15px 1px #000000; 
+box-shadow: 1px 5px 15px 1px #000000;
+border: 0;
+}
+
+#tw_login_btn .p-button:hover{
+  background-color: #6507a0 !important;
+-webkit-box-shadow: inset 1px 5px 15px 1px #000000; 
+box-shadow: inset 1px 5px 15px 1px #000000;
 }
