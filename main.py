@@ -2,10 +2,10 @@ import asyncio
 import eel
 import psutil
 import requests
-from twitchAPI.helper import first
-from twitchAPI.oauth import refresh_access_token,UserAuthenticator,AuthScope
+from twitchAPI.oauth import UserAuthenticator,AuthScope
 from twitchAPI.twitch import Twitch
 import conf
+import eel.electron as ele
 from SQL import autobot_sql
 
 threadloop = True
@@ -99,17 +99,18 @@ def get_data():
     return "ඞ"
 
 def start_eel(dev):
+
     if dev:
         directory = "src"
         page = {"port": 4200}
+        eel.init(directory, [".ts", ".js", ".html"])
+        eel.start(page,mode='chrome', size=(1920, 1080), cmdline_args=['--start-fullscreen','--fast-start', '--disable-features=TranslateUI'])
     else:
         directory = "dist/angular-eel"
         page = "index.html"
-
-    eel.init(directory, [".ts", ".js", ".html"])
-
-    eel.start(page, size=(1280, 1000))
-
+        eel.init(directory, [".ts", ".js", ".html"])
+        eel.start(page,mode='chrome', size=(1280, 1000), cmdline_args=['--start-fullscreen','--fast-start', '--kiosk', '--disable-features=TranslateUI'])
+    
 if __name__ == "__main__":
     import sys
     start_eel(dev=len(sys.argv) == 2)
