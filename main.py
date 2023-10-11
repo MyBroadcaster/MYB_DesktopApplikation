@@ -7,6 +7,16 @@ from twitchAPI.twitch import Twitch
 import conf
 import eel.electron as ele
 from SQL import autobot_sql
+import pip
+import sys
+
+
+def is_in_virtual_environment():
+    # Der Pfad zum aktuellen Python-Interpreter
+    python_executable = sys.executable
+    print(python_executable)
+    # Überprüfen, ob der Python-Interpreter innerhalb einer virtuellen Umgebung liegt
+    return ".venv" in python_executable
 
 threadloop = True
 
@@ -98,8 +108,7 @@ def get_user_info(access_token):
 def get_data():
     return "ඞ"
 
-def start_eel(dev):
-
+def start_eel(dev):    
     if dev:
         directory = "src"
         page = {"port": 4200}
@@ -112,5 +121,9 @@ def start_eel(dev):
         eel.start(page,mode='chrome', size=(1280, 1000), cmdline_args=['--start-fullscreen','--fast-start', '--kiosk', '--disable-features=TranslateUI'])
     
 if __name__ == "__main__":
-    import sys
-    start_eel(dev=len(sys.argv) == 2)
+
+    if is_in_virtual_environment():
+        start_eel(dev=len(sys.argv) == 2)
+    else:
+        print('outside venv Please activate venv (.venv/scripts/activate)')
+        sys.exit()
