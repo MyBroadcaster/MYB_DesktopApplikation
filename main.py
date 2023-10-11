@@ -104,7 +104,7 @@ def start_eel(dev):
         directory = "src"
         page = {"port": 4200}
         eel.init(directory, [".ts", ".js", ".html"])
-        eel.start(page,mode='chrome', size=(1920, 1080), cmdline_args=['--start-fullscreen','--fast-start', '--disable-features=TranslateUI'])
+        eel.start(page,mode='chrome',size=(1280, 1000), cmdline_args=['--start-fullscreen', '--fast-start', '--disable-features=TranslateUI'])
     else:
         directory = "dist/angular-eel"
         page = "index.html"
