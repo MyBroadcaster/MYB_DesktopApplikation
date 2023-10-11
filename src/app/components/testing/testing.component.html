@@ -11,8 +11,8 @@
         <p-button (click)="tryeel()">Prozesse Scannen</p-button>
         <a style="margin-left: 30px; color: white; float: right;">Prozesse Insgesamt: {{listarray_leng}}</a>
     </div>
-        <p-table 
-        [value]="listarray" 
+        <p-table
+        [value]="listarray"
         [tableStyle]="{ 'min-width': '50rem' }"
         [paginator]="true"
         [rows]="10"
@@ -30,12 +30,12 @@
                 <tr>
                     <ng-container *ngIf="header.length == 1; then coursesList; else noCourses">
                     </ng-container>
-                   
+
                    <ng-template #coursesList>
                     <td>{{ listarray }}</td>
                    </ng-template>
                    <ng-template #noCourses>
-                    <td *ngFor="let apps of listarray; let i = index"> 
+                    <td *ngFor="let apps of listarray; let i = index">
                         {{ apps }}
                     </td>
                   </ng-template>
@@ -56,8 +56,8 @@
         <p-button (click)="autoBotDb_Specific()">Get spezific Data</p-button>
         <a style="margin-left: 30px; color: white; float: right;">Datensätze Insgesamt: {{listarray_leng}}</a>
         </div>
-        <p-table 
-        [value]="listarray" 
+        <p-table
+        [value]="listarray"
         [tableStyle]="{ 'min-width': '50rem' }"
         [paginator]="true"
         [rows]="10"
@@ -75,12 +75,12 @@
                 <tr>
                     <ng-container *ngIf="header.length == 1; then coursesList; else noCourses">
                     </ng-container>
-                   
+
                    <ng-template #coursesList>
                     <td>{{ listarray }}</td>
                    </ng-template>
                    <ng-template #noCourses>
-                    <td *ngFor="let apps of listarray; let i = index"> 
+                    <td *ngFor="let apps of listarray; let i = index">
                         {{ apps }}
                     </td>
                   </ng-template>
@@ -117,6 +117,11 @@
     </div>
     </p-accordionTab>
 </p-accordion>
+</div>
+
+<div>
+  <h1>Font Awesome Test</h1>
+  <i class="fa-solid fa-book"></i>
 </div>
 </body>
 </html>
