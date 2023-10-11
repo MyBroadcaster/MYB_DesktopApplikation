@@ -16,6 +16,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarModule } from 'primeng/sidebar';
+import { PrimengSidebarComponent } from './components/primeng-sidebar/primeng-sidebar.component';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { SidebarModule } from 'primeng/sidebar';
     DashboardComponent,
     SidebarComponent,
     TestingComponent,
+    PrimengSidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { SidebarModule } from 'primeng/sidebar';
     TableModule,
     InputTextModule,
     AccordionModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

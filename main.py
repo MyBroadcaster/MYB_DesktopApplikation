@@ -108,7 +108,7 @@ def get_user_info(access_token):
 def get_data():
     return "ඞ"
 
-def start_eel(dev):    
+def start_eel(dev):
     if dev:
         directory = "src"
         page = {"port": 4200}
@@ -119,7 +119,7 @@ def start_eel(dev):
         page = "index.html"
         eel.init(directory, [".ts", ".js", ".html"])
         eel.start(page,mode='chrome', size=(1280, 1000), cmdline_args=['--start-fullscreen','--fast-start', '--kiosk', '--disable-features=TranslateUI'])
-    
+
 if __name__ == "__main__":
 
     if is_in_virtual_environment():

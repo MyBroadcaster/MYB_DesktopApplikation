@@ -59,13 +59,50 @@ html,body {height: 100%; margin: 0px; padding: 0px; font-family: Roboto, "Helvet
 
 #tw_login_btn .p-button{
   background-color: #8f15cb !important;
-  -webkit-box-shadow: 1px 5px 15px 1px #000000; 
+  -webkit-box-shadow: 1px 5px 15px 1px #000000;
 box-shadow: 1px 5px 15px 1px #000000;
 border: 0;
 }
 
 #tw_login_btn .p-button:hover{
   background-color: #6507a0 !important;
--webkit-box-shadow: inset 1px 5px 15px 1px #000000; 
+-webkit-box-shadow: inset 1px 5px 15px 1px #000000;
 box-shadow: inset 1px 5px 15px 1px #000000;
+}
+
+// PrimeNG Component Styles
+
+.p-sidebar {
+  &.prime-sidebar {
+    .p-sidebar-right {
+      position: relative;
+    }
+    .p-sidebar-header {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .p-sidebar-content {
+      padding: 0 30px;
+    }
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(10, 10, 10, .65);
+    box-shadow: 0 8px 32px rgb(2, 4, 24);
+    border-right: 2px solid rgba(255, 255, 255, .09);
+  }
+}
+
+.p-divider {
+  &.sidebar-divider {
+    &.p-divider-horizontal {
+      margin: 40px 0 50px;
+    }
+    &.p-divider-horizontal:before {
+      border-top-color: rgba(255, 255, 255, .1);
+      border-width: 2px;
+      border-radius: 3px;
+      margin: 0;
+    }
+  }
 }
