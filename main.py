@@ -5,7 +5,7 @@ import requests
 from twitchAPI.oauth import UserAuthenticator,AuthScope
 from twitchAPI.twitch import Twitch
 import conf
-import eel.electron as ele
+import eel.browsers
 from SQL import autobot_sql
 import pip
 import sys
@@ -72,6 +72,7 @@ async def oauthprocess():
     token, refresh_token = await auth.authenticate()
     await twitch.set_user_authentication(token, target_scope, refresh_token)
     userid, username, profile_image = get_user_info(token)
+    
     eel.change_acc_info(profile_image, username)
     return token, refresh_token, userid, username, profile_image
 @eel.expose
@@ -112,18 +113,19 @@ def start_eel(dev):
     if dev:
         directory = "src"
         page = {"port": 4200}
+        options = {
+	    'mode': 'electron'}
+        eel.browsers.set_path('electron', 'node_modules/electron/dist/electron')
         eel.init(directory, [".ts", ".js", ".html"])
-        eel.start(page,mode='chrome',size=(1280, 1000), cmdline_args=['--start-fullscreen', '--fast-start', '--disable-features=TranslateUI'])
+        eel.start(page,options=options,suppress_error=True)
     else:
-        directory = "dist/angular-eel"
+        directory = "dist/angular-eel/"
         page = "index.html"
+        options = {
+	    'mode': 'electron'}
+        eel.browsers.set_path('electron', 'node_modules/electron/dist/electron')
         eel.init(directory, [".ts", ".js", ".html"])
-        eel.start(page,mode='chrome', size=(1280, 1000), cmdline_args=['--start-fullscreen','--fast-start', '--kiosk', '--disable-features=TranslateUI'])
+        eel.start(page,options=options,suppress_error=True)
 
 if __name__ == "__main__":
-
-    if is_in_virtual_environment():
         start_eel(dev=len(sys.argv) == 2)
-    else:
-        print('outside venv Please activate venv (.venv/scripts/activate)')
-        sys.exit()

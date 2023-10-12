@@ -1,6 +1,7 @@
 {
   "name": "angular-eel",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +27,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "electron": "^27.0.0",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primeng": "^16.4.1",
