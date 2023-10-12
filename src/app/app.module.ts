@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarModule } from 'primeng/sidebar';
 import { PrimengSidebarComponent } from './components/primeng-sidebar/primeng-sidebar.component';
 import { DividerModule } from 'primeng/divider';
+import { TitlebarComponent } from './components/basic/titlebar/titlebar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DividerModule } from 'primeng/divider';
     SidebarComponent,
     TestingComponent,
     PrimengSidebarComponent,
+    TitlebarComponent,
   ],
   imports: [
     BrowserModule,

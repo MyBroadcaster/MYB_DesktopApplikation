@@ -10,14 +10,6 @@ from SQL import autobot_sql
 import pip
 import sys
 
-
-def is_in_virtual_environment():
-    # Der Pfad zum aktuellen Python-Interpreter
-    python_executable = sys.executable
-    print(python_executable)
-    # Überprüfen, ob der Python-Interpreter innerhalb einer virtuellen Umgebung liegt
-    return ".venv" in python_executable
-
 threadloop = True
 
 @eel.expose
@@ -75,7 +67,6 @@ async def oauthprocess():
     
     eel.change_acc_info(profile_image, username)
     return token, refresh_token, userid, username, profile_image
-@eel.expose
 
 def get_user_info(access_token):
     # Twitch API endpoint to get user information
