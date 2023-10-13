@@ -20,14 +20,14 @@ sidebarVisible: boolean = true;
     this.router.navigate([menuItem.path]);
   }
   ngOnInit(): void {
-    
+
     this.currentUserName = localStorage.getItem("name") || "{}";
     this.currentUserPfp = localStorage.getItem("profilbild") || "{}";
 
     eel.expose(change_acc_info);
     function change_acc_info(logo: string, name:string){
-      var twitch_logo = <HTMLImageElement>document.getElementById("twlogo");
-      var twitch_name = <HTMLHeadingElement>document.getElementById("twname");
+      var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
+      var twitch_name = <HTMLHeadingElement>document.querySelector(".twitch-name")
       console.log(name, logo)
       twitch_logo.src = logo
       twitch_name.innerHTML = name

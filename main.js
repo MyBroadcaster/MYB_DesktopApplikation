@@ -13,8 +13,8 @@ function createWindow() {
   })
   win.webContents.openDevTools();
 
-  //win.loadURL(`file:///./dist/angular-eel/index.html`);
-  win.loadURL(`file://${__dirname}/dist/angular-eel/index.html`)
+  win.loadURL(`http://localhost:4200`);
+  //win.loadURL(`file://${__dirname}/dist/angular-eel/index.html`)
   //win.loadFile(`./dist/angular-eel/index.html`);
 }
 
