@@ -74,13 +74,27 @@ box-shadow: inset 1px 5px 15px 1px #000000;
 
 .p-sidebar {
   &.prime-sidebar {
-    .p-sidebar-right {
-      position: relative;
+    &.p-sidebar-left {
+      &.sidebar-collapsed {
+        width: 6.5rem;
+      }
     }
     .p-sidebar-header {
       display: flex;
       justify-content: center;
       margin-top: 40px;
+    }
+    &.sidebar-collapsed {
+      .p-sidebar-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: visible;
+      }
+
+      .p-sidebar-header {
+        margin-top: 30px;
+      }
     }
     .p-sidebar-content {
       padding: 0 30px;

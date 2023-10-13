@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class PrimengSidebarComponent implements OnInit {
   public displayMaximizedSidebar = true;
+  public displayMinimizedSidebar = false;
+
   public currentUserName: string = "";
   public currentUserPfp: string = "";
   public menuItems: SidebarMenuItem[] | undefined;
