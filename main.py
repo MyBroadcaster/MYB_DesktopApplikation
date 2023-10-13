@@ -1,4 +1,6 @@
 import asyncio
+import sys
+
 import eel
 import psutil
 import requests
@@ -7,8 +9,6 @@ from twitchAPI.twitch import Twitch
 import conf
 import eel.browsers
 from SQL import autobot_sql
-import pip
-import sys
 
 threadloop = True
 
@@ -104,17 +104,15 @@ def start_eel(dev):
     if dev:
         directory = "src"
         page = {"port": 4200}
-        options = {
-	    'mode': 'electron'}
         eel.browsers.set_path('electron', 'node_modules/electron/dist/electron')
         eel.init(directory, [".ts", ".js", ".html"])
-        eel.start(page,options=options,suppress_error=True)
+        eel.start(page,mode='electron')
     else:
         directory = "dist/angular-eel/"
         page = "index.html"
         options = {
 	    'mode': 'electron'}
-        eel.browsers.set_path('electron', 'node_modules/electron/dist/electron')
+        eel.browsers.set_path('electron', 'electron')
         eel.init(directory, [".ts", ".js", ".html"])
         eel.start(page,options=options,suppress_error=True)
 
