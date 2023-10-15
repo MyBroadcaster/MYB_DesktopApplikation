@@ -46,5 +46,5 @@ ng build
 Convert to Exe:
 
 ```
-python -m eel main.py dist/angular-eel --exclude win32com --exclude numpy --exclude cryptography --onefile --noconsole
+npm run dist
 ```

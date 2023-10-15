@@ -8,7 +8,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('C:\\Users\\yanis\\AppData\\Local\\Programs\\Python\\Python39\\lib\\eel\\eel.js', 'eel'), ('dist/angular-eel', 'dist/angular-eel')],
+    datas=[('D:\\Development\\Repositorys\\angular-eel-demo\\.venv\\lib\\site-packages\\eel\\eel.js', 'eel'), ('dist/angular-eel', 'dist/angular-eel')],
     hiddenimports=['bottle_websocket'],
     hookspath=[],
     hooksconfig={},
