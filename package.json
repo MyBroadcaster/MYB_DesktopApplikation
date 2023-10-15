@@ -55,7 +55,7 @@
   "build": {
     "productName":"Test electron",
     "appId": "electron-eel",
-    "compression": "store",
+    "compression": "maximum",
     "asar":"true",
     "dmg": {
       "title": "${productName} ${version}"
