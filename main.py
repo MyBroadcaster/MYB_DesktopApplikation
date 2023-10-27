@@ -100,6 +100,10 @@ def get_user_info(access_token):
 def get_data():
     return "ඞ"
 
+@eel.expose
+def closeapp():
+    sys.exit(0)
+
 def start_eel(dev):
     if len(dev) == 2:
         if dev[1] == "dev":

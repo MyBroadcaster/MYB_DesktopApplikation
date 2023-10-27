@@ -37,7 +37,7 @@ pip install -r requirements.txt
 Update Requirments:
 
 ```
-pip freeze > requirements.txt
+pip freeze > requirements.txt --local
 ```
 
 

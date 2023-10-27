@@ -7,9 +7,11 @@ import { eel } from 'src/app/app.component';
   styleUrls: ['./titlebar.component.scss']
 })
 export class TitlebarComponent implements OnInit {
-  ngOnInit(): void {}
-  
-  async closewindow(){
-    await eel.close_app();
+  ngOnInit(): void {
   }
+
+  async closewindow(){
+    window.close()
+    await eel.closeapp();
+  }  
 }

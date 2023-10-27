@@ -20,6 +20,7 @@ import { PrimengSidebarComponent } from './components/primeng-sidebar/primeng-si
 import { DividerModule } from 'primeng/divider';
 import { TitlebarComponent } from './components/basic/titlebar/titlebar.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
