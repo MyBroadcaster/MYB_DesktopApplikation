@@ -10,7 +10,7 @@
     "test": "ng test",
     "electron": "electron .",
     "electron-build": "ng build && electron .",
-    "dist": "ng build --configuration production && electron-builder && pip freeze > requirements.txt --local && python -m eel main.py dist/angular-eel --exclude win32com --exclude numpy --exclude cryptography --onefile --distpath ./release"
+    "dist": "ng build --configuration production && electron-builder && pip freeze > requirements.txt --local && python -m eel main.py dist/angular-eel --exclude win32com --exclude numpy --exclude cryptography --onefile --noconsole --noconfirm --clean --name %npm_package_name% --distpath ./release"
   },
   "private": true,
   "dependencies": {
