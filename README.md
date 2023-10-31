@@ -20,19 +20,24 @@ run venv.bat (Requirements install not required)
 .venv/Scripts/Activate.ps1
 ```
 
+To deactivate VE:
 
-Install Requirments
+```
+deactivate
+```
+
+
+## Python Requirements
+Install Requirments:
 
 ```
 pip install -r requirements.txt
 ```
 
-
-
-To deactivate VE:
+Update Requirments:
 
 ```
-deactivate
+pip freeze > requirements.txt --local
 ```
 
 
@@ -46,5 +51,5 @@ ng build
 Convert to Exe:
 
 ```
-python -m eel main.py dist/angular-eel --exclude win32com --exclude numpy --exclude cryptography --onefile --noconsole
+npm run dist
 ```

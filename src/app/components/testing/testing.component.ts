@@ -80,6 +80,4 @@ export class TestingComponent implements OnInit {
     this.refresh_token = back[1]
     console.log(back)
   }
-
-
 }

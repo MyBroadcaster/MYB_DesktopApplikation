@@ -1,22 +1,14 @@
 import asyncio
+import sys
+
 import eel
 import psutil
 import requests
 from twitchAPI.oauth import UserAuthenticator,AuthScope
 from twitchAPI.twitch import Twitch
 import conf
-import eel.electron as ele
+import eel.browsers
 from SQL import autobot_sql
-import pip
-import sys
-
-
-def is_in_virtual_environment():
-    # Der Pfad zum aktuellen Python-Interpreter
-    python_executable = sys.executable
-    print(python_executable)
-    # Überprüfen, ob der Python-Interpreter innerhalb einer virtuellen Umgebung liegt
-    return ".venv" in python_executable
 
 threadloop = True
 
@@ -72,9 +64,9 @@ async def oauthprocess():
     token, refresh_token = await auth.authenticate()
     await twitch.set_user_authentication(token, target_scope, refresh_token)
     userid, username, profile_image = get_user_info(token)
+    
     eel.change_acc_info(profile_image, username)
     return token, refresh_token, userid, username, profile_image
-@eel.expose
 
 def get_user_info(access_token):
     # Twitch API endpoint to get user information
@@ -108,22 +100,35 @@ def get_user_info(access_token):
 def get_data():
     return "ඞ"
 
+@eel.expose
+def closeapp():
+    sys.exit(0)
+
 def start_eel(dev):
-    if dev:
-        directory = "src"
-        page = {"port": 4200}
-        eel.init(directory, [".ts", ".js", ".html"])
-        eel.start(page,mode='chrome',size=(1280, 1000), cmdline_args=['--start-fullscreen', '--fast-start', '--disable-features=TranslateUI'])
+    if len(dev) == 2:
+        if dev[1] == "dev":
+            directory = "src"
+            page = {"port": 4200}
+            eel.browsers.set_path('electron', 'node_modules/electron/dist/electron')
+            eel.init(directory, [".ts", ".js", ".html"])
+            eel.start(page,mode='electron')
+
+        if dev[1] == "build":
+                directory = "dist/angular-eel/"
+                page = "index.html"
+                options = {
+                'mode': 'electron'}
+                eel.browsers.set_path('electron', 'node_modules/electron/dist/electron')
+                eel.init(directory, [".ts", ".js", ".html"])
+                eel.start(page,options=options,suppress_error=True)
     else:
-        directory = "dist/angular-eel"
-        page = "index.html"
-        eel.init(directory, [".ts", ".js", ".html"])
-        eel.start(page,mode='chrome', size=(1280, 1000), cmdline_args=['--start-fullscreen','--fast-start', '--kiosk', '--disable-features=TranslateUI'])
+            directory = "dist/angular-eel/"
+            page = "index.html"
+            options = {
+            'mode': 'electron'}
+            eel.browsers.set_path('electron', 'electron')
+            eel.init(directory, [".ts", ".js", ".html"])
+            eel.start(page,options=options,suppress_error=True)
 
 if __name__ == "__main__":
-
-    if is_in_virtual_environment():
-        start_eel(dev=len(sys.argv) == 2)
-    else:
-        print('outside venv Please activate venv (.venv/scripts/activate)')
-        sys.exit()
+        start_eel(dev=sys.argv)

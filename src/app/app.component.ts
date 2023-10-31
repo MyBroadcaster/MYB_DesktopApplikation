@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +8,8 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  constructor(private router: Router ) {}
+  currentroute: any = this.router.url;
   ngOnInit(): void {}
   faCoffee = faCoffee;
 }

@@ -12,79 +12,58 @@ import { eel } from 'src/app/app.component';
 export class SidebarComponent implements OnInit {
 sidebarVisible: boolean = true;
   constructor(private router: Router) { }
-
+  public displayMaximizedSidebar = true;
+  public currentUserName: string = "";
+  public currentUserPfp: string = "";
+  public menuItems: SidebarMenuItem[] | undefined;
+  public goToSidebarRoute(menuItem: SidebarMenuItem) {
+    this.router.navigate([menuItem.path]);
+  }
   ngOnInit(): void {
-    
-    var twitch_logo = <HTMLImageElement>document.getElementById("twlogo");
-    var twitch_name = <HTMLHeadingElement>document.getElementById("twname");
-    var currentUser = localStorage.getItem('name') || '{}';
-    var currentpb_tw = localStorage.getItem("profilbild") || '{}';
-    twitch_logo.src = currentpb_tw 
-    twitch_name.innerHTML = currentUser
+
+    this.currentUserName = localStorage.getItem("name") || "{}";
+    this.currentUserPfp = localStorage.getItem("profilbild") || "{}";
 
     eel.expose(change_acc_info);
     function change_acc_info(logo: string, name:string){
+      var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
+      var twitch_name = <HTMLHeadingElement>document.querySelector(".twitch-name")
       console.log(name, logo)
       twitch_logo.src = logo
       twitch_name.innerHTML = name
     }
 
-    const sidebar :any = document.querySelector(".sidebar");
-    const navItems = document.querySelectorAll("nav .nav-item");
-    const toggle :any = document.querySelector(".sidebar .toggle");
-    sidebar.classList.add("open")
-
-
-toggle.addEventListener("click", () => {
-  if (sidebar.className === "sidebar") sidebar.classList.add("open");
-  else sidebar.classList.remove("open");
-});
-
-navItems.forEach((navItem) => {
-  navItem.addEventListener("click", () => {
-    navItems.forEach((navItem) => {
-      navItem.classList.remove("active");
-    });
-
-    navItem.classList.add("active");
-  });
-});
-  }
-
-  btnClick(item: any) {
-    this.router.navigate([item.path])
-  }
-    menueitems = [
+    this.menuItems = [
       {
-        name: 'Dashboard',
-        path: '/dashboard',
-        icon: 'bx bxs-dashboard'
+        name: "Dashboard",
+        path: "/dashboard",
+        icon: "bx bxs-dashboard"
       },
       {
-        name: 'Apps',
-        path: '',
-        icon: 'bx bxs-wallet'
+        name: "Apps",
+        path: "",
+        icon: "bx bxs-wallet"
       },
       {
-        name: 'Analytics',
-        path: '',
-        icon: 'bx bxs-bar-chart-alt-2'
+        name: "Analytics",
+        path: "",
+        icon: "bx bxs-bar-chart-alt-2"
       },
       {
-        name: 'Benachrichtigungen',
-        path: '',
-        icon: 'bx bxs-bell'
+        name: "Benachrichtigungen",
+        path: "",
+        icon: "bx bxs-bell"
       },
       {
-        name: 'Einstellungen',
-        path: '',
-        icon: 'bx bxs-cog'
+        name: "Einstellungen",
+        path: "",
+        icon: "bx bxs-cog"
       },
       {
-        name: 'Testing',
-        path: '/testing',
-        icon: 'bx bx-code-alt'
-      },
+        name: "Testing",
+        path: "/testing",
+        icon: "bx bx-code-alt"
+      }
     ];
-    
+  }
 }

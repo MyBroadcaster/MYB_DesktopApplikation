@@ -3,13 +3,21 @@
     <head>
         <script type="text/javascript" src="/eel.js"></script>
     </head>
-    <body>
-        <div id="sidebar">
-            <!-- <app-sidebar></app-sidebar> -->
-            <app-primeng-sidebar></app-primeng-sidebar>
+     <body>
+
+        <header>
+            <app-titlebar></app-titlebar>
+        </header>
+        <div id="main">
+            <div id="sidebar">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div id="content">
+                <router-outlet></router-outlet>
+            </div>
         </div>
-        <div id="content">
-            <router-outlet></router-outlet>
-        </div>
-     </body>
+        <script>
+          require('./renderer.js')
+        </script>
+      </body>
 </html>

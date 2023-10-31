@@ -3,3 +3,4 @@ interface SidebarMenuItem {
   path: string,
   icon: string
 }
+declare var electron: any;
