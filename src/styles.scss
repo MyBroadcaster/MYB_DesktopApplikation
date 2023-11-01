@@ -33,25 +33,12 @@ $angular-eel-theme: mat.define-light-theme((
 @include mat.all-component-themes($angular-eel-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "app/themes/default.css";
 @import "primeng/resources/primeng.css";
 @import 'node_modules/primeflex/primeflex.css';
 @import "primeicons/primeicons.css";
 
-html,body {height: 100%; margin: 0px; padding: 0px; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(110deg, #141490 60%, #ffed4b 60%);}
-
-#testingaccordion .p-accordion-header .p-accordion-header-link{
-  background-color: #383838 !important;
-  color: white;
-}
-
-#testingaccordion .p-accordion .p-accordion-content {
-  background: rgb(0,255,207);
-  background: -moz-radial-gradient(circle, rgba(0,255,207,1) 0%, rgba(100,8,224,1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(0,255,207,1) 0%, rgba(100,8,224,1) 100%);
-  background: radial-gradient(circle, rgba(0,255,207,1) 0%, rgba(100,8,224,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffcf",endColorstr="#6408e0",GradientType=1);
-}
+html,body {height: 100%; margin: 0px; padding: 0px; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 #tw_login_btn .p-button{
   background-color: #8f15cb !important;
@@ -64,6 +51,22 @@ border: 0;
   background-color: #6507a0 !important;
 -webkit-box-shadow: inset 1px 5px 15px 1px #000000;
 box-shadow: inset 1px 5px 15px 1px #000000;
+}
+
+#profilbtn .p-button{
+  margin-top: 10px;
+  background-color: transparent !important;
+  border:0;
+  .p-button-label{
+    color: white;
+    font-size: 30px;
+  }
+  .p-button-icon{
+    color: white;
+  }
+  :hover{
+    text-decoration:underline;
+  }
 }
 
 #main{
@@ -106,6 +109,17 @@ box-shadow: inset 1px 5px 15px 1px #000000;
   }
 }
 
+#title-btn .p-button{
+  background-color: white;
+  opacity: 0.5;
+  height: 34px;
+  margin-right: 2px;
+  border-radius: 0;
+  :hover{
+    background-color: rgba(255, 255, 255, 0.75);
+    opacity: 1;
+  }
+}
 .p-divider {
   &.sidebar-divider {
     &.p-divider-horizontal {

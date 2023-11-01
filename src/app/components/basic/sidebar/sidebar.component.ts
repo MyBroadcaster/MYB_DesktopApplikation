@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit,Input} from '@angular/core';
+import { Router,NavigationEnd  } from '@angular/router';
 import { eel } from 'src/app/app.component';
 
 @Component({
@@ -10,20 +10,52 @@ import { eel } from 'src/app/app.component';
 
 
 export class SidebarComponent implements OnInit {
-sidebarVisible: boolean = true;
-  constructor(private router: Router) { }
-  public displayMaximizedSidebar = true;
+items = [{}];
+displayMaximizedSidebar = true;
+currentRoute: string;
+constructor(private router: Router) {
+  this.currentRoute = this.router.url;
+}
   public currentUserName: string = "";
+  public test: boolean = true;
   public currentUserPfp: string = "";
   public menuItems: SidebarMenuItem[] | undefined;
   public goToSidebarRoute(menuItem: SidebarMenuItem) {
     this.router.navigate([menuItem.path]);
   }
+
   ngOnInit(): void {
-
+    this.items = [
+      {
+          label: 'Options',
+          items: [
+              {
+                  label: 'Update',
+                  icon: 'pi pi-refresh',
+              },
+              {
+                  label: 'Delete',
+                  icon: 'pi pi-times',
+              }
+          ]
+      }
+    ]
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+        console.log(this.currentRoute)
+        if (this.currentRoute == "/" && this.displayMaximizedSidebar == true){
+          this.displayMaximizedSidebar = false;
+        }
+        if (this.currentRoute != "/" && this.displayMaximizedSidebar == false)
+        {
+          this.displayMaximizedSidebar = true;
+        }
+        
+      }
+    });
     this.currentUserName = localStorage.getItem("name") || "{}";
-    this.currentUserPfp = localStorage.getItem("profilbild") || "{}";
-
+    this.currentUserPfp = localStorage.getItem("profilbild") || "{}"; 
     eel.expose(change_acc_info);
     function change_acc_info(logo: string, name:string){
       var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
@@ -54,11 +86,11 @@ sidebarVisible: boolean = true;
         path: "",
         icon: "bx bxs-bell"
       },
-      {
-        name: "Einstellungen",
-        path: "",
-        icon: "bx bxs-cog"
-      },
+      //{
+      //  name: "Einstellungen",
+      //  path: "",
+      //  icon: "bx bxs-cog"
+      //},
       {
         name: "Testing",
         path: "/testing",

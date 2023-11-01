@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { eel } from 'src/app/app.component';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/services/angular/theme.service';
+
+interface Themes {
+  name: string;
+}
 
 @Component({
   selector: 'app-testing',
@@ -10,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./testing.component.scss']
 })
 export class TestingComponent implements OnInit {
-  constructor(private messageService: MessageService, private router: Router) {}
+  constructor(private messageService: MessageService, private router: Router, private themeService: ThemeService) {}
 
   listarray : any;
   listarray_leng : any  = 0
@@ -21,13 +26,21 @@ export class TestingComponent implements OnInit {
   loading: boolean = false;
   actbtn: boolean = true;
   login: boolean = false;
+  themes: Themes[] | undefined;
+  selectedThemes: Themes | undefined;
 
   ngOnInit(): void {
-    console.log(!this.oauth_token)
+    this.themes = [
+      { name: 'default'},
+      { name: 'test_theme'},
+      { name: 'dark_mode'},
+      {name: "rangelrudi"}];
+
     if (this.oauth_token){
       this.login = true
     }
   }
+
   async tryeel(){
     let back = await eel.processlist_Scan()();
     console.log(back)
@@ -42,6 +55,11 @@ export class TestingComponent implements OnInit {
     this.loading = true;
     this.actbtn = false;
     console.log(btntext)
+  }
+  changeTheme(){
+    const thema = this.selectedThemes?.name
+    console.log(thema!)
+    this.themeService.switchTheme(thema!)
   }
 
   clearLocalStorage(){

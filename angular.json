@@ -31,9 +31,19 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              {"input": "src/app/themes/test_theme.css",
+              "bundleName": "test_theme",
+              "inject": false},
+              {"input": "src/app/themes/default.css",
+              "bundleName": "default",
+              "inject": false},
+              {"input": "src/app/themes/theme_test.css",
+              "bundleName": "dark_mode",
+              "inject": false},
+              {"input": "src/app/themes/rangelrudi.css",
+              "bundleName": "rangelrudi",
+              "inject": false}
             ],
             "scripts": [
             ]

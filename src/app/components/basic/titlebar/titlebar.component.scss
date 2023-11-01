@@ -11,10 +11,10 @@ body {
     width: 100%;
     color: #FFF;
     width: calc(100% - 2px); /*Compensate for body 1px border*/
-    background: #254053;
+    background: #212121;;
   }
   #titlebar #drag-region {
-    width: 100%;
+    width: 90%;
     height: 100%;
     -webkit-app-region: drag;
   }
@@ -41,11 +41,11 @@ body {
   #max-button, #restore-button {
     grid-column: 2;
   }
-  #close-button {
+  #title-btn {
     float:right;
-    margin-top: -20px;
+    margin-top: -30px;
+    margin-right:-6px; 
     size: 56px;
-    z-index: 4;
   }
   
   #main {

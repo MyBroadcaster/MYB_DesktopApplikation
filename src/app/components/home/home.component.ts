@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { ActivatedRoute, Router} from '@angular/router';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { eel } from 'src/app/app.component';
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   oauth_token: any;
   refresh_token: any;
   hello_a: string = ""
+  Homeset: boolean = true;
   loading = false
   blured = true;
   ngOnInit(): void {
@@ -31,7 +33,6 @@ export class HomeComponent implements OnInit {
     let back = await eel.tw_Login()();
     this.oauth_token = back[0]
     this.refresh_token = back[1]
-    console.log(back)
     localStorage.setItem('id', back[2]);
     localStorage.setItem('profilbild', back[4]);
     localStorage.setItem('name', back[3]);
@@ -40,12 +41,6 @@ export class HomeComponent implements OnInit {
     this.twitch_name = back[3]
     this.hello_a = "Willkommen, " + back[3]
     this.loading = false
-    this.delay(10000)
     this.router.navigate(['/dashboard']);
   }
-
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
-
 }

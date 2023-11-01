@@ -2,7 +2,9 @@
     <ng-template pTemplate="header">
       <div class="flex flex-column justify-content-center align-items-center">
         <img class="twitch-pfp" [src]="currentUserPfp">
-        <h3 class="twitch-name">{{currentUserName | uppercase}}</h3>
+        <p-menu #menu [model]="items" [popup]="true"></p-menu>
+        <p-button  id="profilbtn" type="button" icon="fa-solid fa-gear" iconPos="right" (click)="menu.toggle($event)" label="{{currentUserName | uppercase}}">
+        </p-button>
       </div>
     </ng-template>
     <ng-template pTemplate="content">

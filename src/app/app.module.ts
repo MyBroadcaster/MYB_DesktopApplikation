@@ -19,6 +19,10 @@ import { SidebarModule } from 'primeng/sidebar';
 import { PrimengSidebarComponent } from './components/primeng-sidebar/primeng-sidebar.component';
 import { DividerModule } from 'primeng/divider';
 import { TitlebarComponent } from './components/basic/titlebar/titlebar.component';
+import { MenuModule } from 'primeng/menu';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -32,10 +36,13 @@ import { TitlebarComponent } from './components/basic/titlebar/titlebar.componen
     TitlebarComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     ToastModule,
     CommonModule,
     SidebarModule,
+    MenuModule,
+    DropdownModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
