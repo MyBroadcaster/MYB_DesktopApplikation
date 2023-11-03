@@ -21,3 +21,10 @@ def autobot_dbcall(item):
         cursor.execute(f'SELECT * FROM `app_database` WHERE ID LIKE "%{item}%" OR Prozess LIKE "%{item}%" OR Anwendung LIKE "%{item}%" OR Kategorie LIKE "%{item}%";')
         result = cursor.fetchall()
     return result
+
+def getDataByEXE(item):
+    connect = autobot_dbconnect()
+    cursor = connect.cursor()
+    cursor.execute(f"SELECT * FROM `app_database` where Prozess= '{item}' ")
+    result = cursor.fetchall()
+    return result

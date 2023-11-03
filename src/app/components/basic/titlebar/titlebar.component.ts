@@ -13,5 +13,15 @@ export class TitlebarComponent implements OnInit {
   async closewindow(){
     window.close()
     await eel.closeapp();
-  }  
+  }
+  minimize() {
+    window.innerWidth = 100;
+    window.innerHeight = 100;
+    window.screenX = screen.width;
+    window.screenY = screen.height;
+
+}
+  maximze(){
+    window.resizeTo(screen.width, screen.height);
+}
 }

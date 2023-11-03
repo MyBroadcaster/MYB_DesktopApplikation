@@ -31,16 +31,15 @@ export class HomeComponent implements OnInit {
   async twitchlogin(){
     this.loading = true
     let back = await eel.tw_Login()();
-    this.oauth_token = back[0]
-    this.refresh_token = back[1]
-    localStorage.setItem('id', back[2]);
-    localStorage.setItem('profilbild', back[4]);
-    localStorage.setItem('name', back[3]);
-    localStorage.setItem('oauth_token', back[0]);
-    localStorage.setItem('refresh_token', back[1]);
+    localStorage.setItem('channelID', back[2]);
+    localStorage.setItem('channelImage', back[5]);
+    localStorage.setItem('loginName', back[3]);
+    localStorage.setItem('displayName', back[4]);
+    localStorage.setItem('oauthToken', back[0]);
+    localStorage.setItem('refreshToken', back[1]);
     this.twitch_name = back[3]
     this.hello_a = "Willkommen, " + back[3]
     this.loading = false
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard'])
   }
 }

@@ -1,0 +1,17 @@
+<body>
+<div>
+    <h1>AutoBot</h1>
+</div>
+<div class="controlnav grid shadow-4">
+    <div class="control col">
+        <p-button label="Start Scan" [loading]="deactivatebtn" [disabled]="deactivatebtn" (onClick)="startbot()"></p-button>
+        <p-button label="Stop Scan" [disabled]="!deactivatebtn" (onClick)="stopbot()"></p-button>
+    </div>
+</div>
+<div class="controlnav grid shadow-4">
+    <div class="col">
+        <img id="appImage" [src]="appImage" alt="Image" width="400">
+        <a id="appname"></a>
+    </div>
+</div>
+</body>

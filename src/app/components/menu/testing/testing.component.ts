@@ -6,6 +6,7 @@ import { ThemeService } from 'src/app/services/angular/theme.service';
 
 interface Themes {
   name: string;
+  themename: string;
 }
 
 @Component({
@@ -31,10 +32,12 @@ export class TestingComponent implements OnInit {
 
   ngOnInit(): void {
     this.themes = [
-      { name: 'default'},
-      { name: 'test_theme'},
-      { name: 'dark_mode'},
-      {name: "rangelrudi"}];
+      { name: 'Default', themename: "default"},
+      { name: 'Test',themename: "test_theme"},
+      { name: 'Dark Theme', themename: "dark_mode"},
+      {name: "RangelRudi", themename: "rangelrudi"},
+      {name: "Dreaon", themename: "dreaon_theme"}];
+      
 
     if (this.oauth_token){
       this.login = true
@@ -57,8 +60,9 @@ export class TestingComponent implements OnInit {
     console.log(btntext)
   }
   changeTheme(){
-    const thema = this.selectedThemes?.name
+    const thema = this.selectedThemes?.themename
     console.log(thema!)
+    localStorage.setItem('appstyle', thema!);
     this.themeService.switchTheme(thema!)
   }
 

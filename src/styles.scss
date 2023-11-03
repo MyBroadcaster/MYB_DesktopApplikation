@@ -133,3 +133,49 @@ box-shadow: inset 1px 5px 15px 1px #000000;
     }
   }
 }
+
+#appfeature_twcard .p-card{
+  border-radius: 10px;
+  background-size: contain;
+  height: 130px;
+  background-size: 50%;
+  background-position: 110%;
+  background-repeat: no-repeat;
+  background-color: #6441A5;
+  border:grey solid 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#appfeature_twcard .p-card:hover{
+  background-color: rgb(42, 8, 69);
+  border:grey solid 2px;
+  box-shadow: rgba(36, 1, 60, 0.25) 0px 54px 55px, rgba(36, 1, 60, 0.25) 0px -12px 30px, rgba(36, 1, 60, 0.25) 0px 4px 6px, rgba(36, 1, 60, 0.25) 0px 12px 13px, rgba(36, 1, 60, 0.25) 0px -3px 5px;
+}
+.control .p-button{
+  margin-right: 10px;
+}
+
+#youtubecard .p-card{
+  margin-top: 20px;
+}
+
+#appfeature_ytcard .p-card{
+  background-size: contain;
+  background-size: 50%;
+  background-position: 110%;
+  background-repeat: no-repeat;
+  background-color: #FF0000;
+}
+
+.autobot .p-card{
+  background-image: url("https://static-cdn.jtvnw.net/ttv-boxart/417752-%7Bwidth%7Dx%7Bheight%7D.jpg");
+}
+.giveaway .p-card{
+  background-image: url("https://t4.ftcdn.net/jpg/05/54/90/27/360_F_554902788_lDIYwWxjyckmx4EoKlmAQ2Qdp6YYitse.png");
+}
+.raid_gallery .p-card{
+  background-image: url("https://raw.githubusercontent.com/Durss/streamerRaider/master/public/discordBot_icon.png");
+}
+
+.twitch_chat .p-card{
+  background-image: url("https://raw.githubusercontent.com/filipesabella/twitch-chat-cleaner/master/despair.png");
+}

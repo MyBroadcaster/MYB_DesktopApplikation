@@ -43,6 +43,9 @@
               "inject": false},
               {"input": "src/app/themes/rangelrudi.css",
               "bundleName": "rangelrudi",
+              "inject": false},
+              {"input": "src/app/themes/dreaon_theme.css",
+              "bundleName": "dreaon_theme",
               "inject": false}
             ],
             "scripts": [

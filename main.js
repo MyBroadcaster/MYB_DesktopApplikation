@@ -4,6 +4,7 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 app.commandLine.appendSwitch('disable-web-security');
 app.commandLine.appendSwitch('allow-file-access-from-files');
 
+app.disableHardwareAcceleration()
 function isAngularDevServerRunning(port, callback) {
   const client = net.connect(port, 'localhost', () => {
     client.end();
@@ -25,7 +26,8 @@ function createWindow() {
     height: 1000,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      //offscreen: true
     },
     frame: false,
     backgroundColor: '#FFF',

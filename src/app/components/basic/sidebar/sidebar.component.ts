@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
 items = [{}];
 displayMaximizedSidebar = true;
 currentRoute: string;
+
 constructor(private router: Router) {
   this.currentRoute = this.router.url;
 }
@@ -23,27 +24,39 @@ constructor(private router: Router) {
   public goToSidebarRoute(menuItem: SidebarMenuItem) {
     this.router.navigate([menuItem.path]);
   }
-
   ngOnInit(): void {
     this.items = [
       {
           label: 'Options',
           items: [
               {
-                  label: 'Update',
-                  icon: 'pi pi-refresh',
+                  label: 'Mein Account',
+                  icon: 'fa-solid fa-user',
+                  command: () => {
+                    this.router.navigate(["/myAccount"])
+                }
               },
               {
-                  label: 'Delete',
-                  icon: 'pi pi-times',
+                  label: 'Einstellungen',
+                  icon: 'fa-solid fa-wrench',
+                  command: () => {
+                    this.router.navigate(["/appSettings"])
+                }
+              },
+              {
+                label: 'LogOut',
+                icon: 'fa-solid fa-right-from-bracket',
+                command: () => {
+                  localStorage.clear();
+                  this.router.navigate(["/"])
               }
+            }
           ]
       }
     ]
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.url;
-        console.log(this.currentRoute)
         if (this.currentRoute == "/" && this.displayMaximizedSidebar == true){
           this.displayMaximizedSidebar = false;
         }
@@ -54,8 +67,9 @@ constructor(private router: Router) {
         
       }
     });
-    this.currentUserName = localStorage.getItem("name") || "{}";
-    this.currentUserPfp = localStorage.getItem("profilbild") || "{}"; 
+    this.currentUserName = localStorage.getItem('displayName') || "{}";
+    this.currentUserPfp = localStorage.getItem('channelImage') || "{}"; 
+
     eel.expose(change_acc_info);
     function change_acc_info(logo: string, name:string){
       var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
@@ -64,38 +78,43 @@ constructor(private router: Router) {
       twitch_logo.src = logo
       twitch_name.innerHTML = name
     }
-
     this.menuItems = [
       {
         name: "Dashboard",
         path: "/dashboard",
-        icon: "bx bxs-dashboard"
+        icon: "bx bxs-dashboard",
+        public: false
       },
       {
         name: "Apps",
-        path: "",
-        icon: "bx bxs-wallet"
+        path: "/apps",
+        icon: "bx bxs-wallet",
+        public: true
       },
       {
         name: "Analytics",
-        path: "",
-        icon: "bx bxs-bar-chart-alt-2"
+        path: "/analytics",
+        icon: "bx bxs-bar-chart-alt-2",
+        public: false
       },
       {
-        name: "Benachrichtigungen",
-        path: "",
-        icon: "bx bxs-bell"
-      },
+        name: "Testing",
+        path: "/testing",
+        icon: "bx bx-code-alt",
+        public: false
+      }
+      //{
+      //  name: "Benachrichtigungen",
+      //  path: "",
+      //  icon: "bx bxs-bell"
+      //},
       //{
       //  name: "Einstellungen",
       //  path: "",
       //  icon: "bx bxs-cog"
       //},
-      {
-        name: "Testing",
-        path: "/testing",
-        icon: "bx bx-code-alt"
-      }
     ];
   }
+  devids = ["147456736"]
+  twitchid = localStorage.getItem("channelID") || "{}";
 }

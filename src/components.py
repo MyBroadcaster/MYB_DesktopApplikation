@@ -4,5 +4,7 @@ from src.app.components.basic.titlebar import titlebar_component
 
 # Normal Components
 from src.app.components.home import home_component
-from src.app.components.testing import testing_component
-from src.app.components.dashboard import dashboard_component
+from src.app.components.menu.testing import testing_component
+from src.app.components.menu.dashboard import dashboard_component
+from src.app.components.functions.twitch.autobot import autobot_component
+from src.app import app_component

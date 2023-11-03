@@ -1,4 +1,4 @@
-<p-sidebar [(visible)]="displayMaximizedSidebar" position="left" [modal]="false" styleClass="prime-sidebar" [showCloseIcon]="false">
+<p-sidebar [(visible)]="displayMaximizedSidebar" position="left" [modal]="false" styleClass="prime-sidebar" id="prime-sidebar" [showCloseIcon]="false">
     <ng-template pTemplate="header">
       <div class="flex flex-column justify-content-center align-items-center">
         <img class="twitch-pfp" [src]="currentUserPfp">
@@ -13,8 +13,8 @@
       </div>
       <ul>
         <ng-container *ngFor="let item of menuItems; let i = index">
-          <a (click)="goToSidebarRoute(item)">
-            <li class="nav-item flex flex-row align-items-center">
+          <a (click)="goToSidebarRoute(item) ">
+            <li *ngIf="item.public == true || devids.includes(twitchid)" class="nav-item flex flex-row align-items-center">
               <i class="{{item.icon}}"></i>
               <span>{{item.name}}</span>
             </li>
