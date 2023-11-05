@@ -112,14 +112,19 @@ box-shadow: inset 1px 5px 15px 1px #000000;
 #title-btn .p-button{
   background-color: white;
   opacity: 0.5;
-  height: 34px;
-  margin-right: 2px;
-  border-radius: 0;
-  :hover{
-    background-color: rgba(255, 255, 255, 0.75);
-    opacity: 1;
-  }
+  height: 30px;
+  width: 30px;
+  margin-top: 4px;
+  margin-right: 0px;
+  border-radius: 0px;
+  border: 0;
 }
+
+#title-btn .p-button:hover{
+  background-color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+}
+
 .p-divider {
   &.sidebar-divider {
     &.p-divider-horizontal {
@@ -167,7 +172,7 @@ box-shadow: inset 1px 5px 15px 1px #000000;
 }
 
 .autobot .p-card{
-  background-image: url("https://static-cdn.jtvnw.net/ttv-boxart/417752-%7Bwidth%7Dx%7Bheight%7D.jpg");
+  background-image: url("https://static-cdn.jtvnw.net/ttv-boxart/509658-285x380.jpg");
 }
 .giveaway .p-card{
   background-image: url("https://t4.ftcdn.net/jpg/05/54/90/27/360_F_554902788_lDIYwWxjyckmx4EoKlmAQ2Qdp6YYitse.png");

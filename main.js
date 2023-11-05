@@ -3,8 +3,6 @@ const net = require('net');
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 app.commandLine.appendSwitch('disable-web-security');
 app.commandLine.appendSwitch('allow-file-access-from-files');
-
-app.disableHardwareAcceleration()
 function isAngularDevServerRunning(port, callback) {
   const client = net.connect(port, 'localhost', () => {
     client.end();
@@ -26,8 +24,8 @@ function createWindow() {
     height: 1000,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true,
       //offscreen: true
+      //runAsNode: false
     },
     frame: false,
     backgroundColor: '#FFF',
@@ -40,8 +38,8 @@ function createWindow() {
       win.webContents.openDevTools();
       win.loadURL(`http://localhost:${angularDevServerPort}`);
     } else {
-     // win.webContents.openDevTools();
-      win.loadURL(`file://${__dirname}/dist/angular-eel/index.html`);
+     win.webContents.openDevTools();
+      win.loadURL(`http://localhost:8000`);
     }
   });
 }

@@ -121,6 +121,17 @@
             <p-dropdown [options]="themes" [(ngModel)]="selectedThemes" (onChange)="changeTheme()" optionLabel="name"></p-dropdown>
     </div>
     </p-accordionTab>
+    <p-accordionTab header="Add new Game">
+        <div>
+            <input style="margin-left: 15px; margin-right: 15px;" value="" id="dbexe" type="text" placeholder="game.exe" pInputText/>
+            <a>oder </a>
+            <p-dropdown [options]="processes" [(ngModel)]="selectedProcess" optionLabel="name"></p-dropdown>
+            <p-button id="Multithreading" (click)="processlist()" icon="fa-solid fa-rotate-right" ></p-button>
+            <input style="margin-left: 15px; margin-right: 15px;" value="" id="dbname" type="text" placeholder="gamename" pInputText/>
+            <input style="margin-left: 15px; margin-right: 15px;" value="" id="dbcategory" type="text" placeholder="Twitch-Category" pInputText/>
+            <p-button id="Multithreading" (click)="addgametoSQL()" >Add to Database</p-button>
+    </div>
+    </p-accordionTab>
 </p-accordion>
 </div>
 

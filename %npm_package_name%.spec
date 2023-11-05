@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='angular-eel',
+    name='%npm_package_name%',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

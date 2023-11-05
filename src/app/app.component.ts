@@ -33,5 +33,5 @@ export class AppComponent implements OnInit {
 }
 
 export const eel = (window as any).eel
-eel.set_host( 'ws://localhost:8000' )
+//eel.set_host('ws://localhost:8000')
 console.log(eel);

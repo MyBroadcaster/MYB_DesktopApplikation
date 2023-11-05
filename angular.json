@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "outputHashing": "none",
             "outputPath": "dist/angular-eel",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -65,7 +66,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,

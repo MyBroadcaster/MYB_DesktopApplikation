@@ -5,9 +5,12 @@ from src.app.services.python.system import get_system_processes
 from src.app.components.functions.twitch.autobot import blacklist
 from src.app.services.python.twitch_api.getChannelInfo import getCategoryByName
 from src.app.services.python.twitch_api.updateChannelInfo import category_switch
+from src.app.services.python.twitch_api.getChannelInfo import getChannelInformations
 
 exit_event = threading.Event()
 defaultcategory = ""
+deactivatebtn = False
+activecategory = ""
 
 def getdata(data):
     getalldata = k189647_autoswitcher.getDataByEXE(data)
@@ -30,16 +33,25 @@ def startbot(twitchID:str, oauthtoken: str, defaultCategory: str):
 def stopbot():
     exit_event.set()
 
+
+@eel.expose
+def currentCategory(oauthToken: str, twitchID: str):
+    global gameid, gamepic
+    data = getChannelInformations(oauth_token=oauthToken, twitchID=twitchID)
+    game = getCategoryByName(oauth_token=oauthToken,categoryName= data[0]["game_name"])
+    gamepic = game[0]['box_art_url']
+    gameid = game[0]['id']
+    gamepic = gamepic.replace("-{width}x{height}", "")
+    return data[0]["game_name"],gameid, gamepic
+
 @eel.expose
 def getpydata():
-    activecategory = activecategory
-    gameid = gameid
-    gamepic = gamepic
-    return gamepic, activecategory, gamepic
+    return gamepic, activecategory, gameid, deactivatebtn
 
 def autobot(twitchID:str, oauthtoken: str):
-    global activecategory, gamepic, gameid, defaultcategory
+    global activecategory, gamepic, gameid, defaultcategory, deactivatebtn
     activecategory = ""
+    deactivatebtn = True
     while True:
         found = False
         processes = getprocesses()
@@ -54,7 +66,11 @@ def autobot(twitchID:str, oauthtoken: str):
                         continue
                     else:
                         activecategory = data[0][3]
-                        gameid, gamepic = getCategoryByName(oauth_token=oauthtoken,categoryName=data[0][3])
+                        game = getCategoryByName(oauth_token=oauthtoken,categoryName=data[0][3])
+                        if game != []:
+                            gamepic = game[0]['box_art_url']
+                            gameid = game[0]['id']
+                            gamepic = gamepic.replace("-{width}x{height}", "")
                         eel.updateInformations(gamepic)
                         category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=gameid)
                         
@@ -62,11 +78,15 @@ def autobot(twitchID:str, oauthtoken: str):
         if found == False:
             if activecategory != defaultcategory:
                 activecategory = defaultcategory
-                gameid, gamepic = getCategoryByName(oauth_token=oauthtoken,categoryName=defaultcategory)
+                game = getCategoryByName(oauth_token=oauthtoken,categoryName=defaultcategory)
+                gamepic = game[0]['box_art_url']
+                gameid = game[0]['id']
+                gamepic = gamepic.replace("-{width}x{height}", "")
                 eel.updateInformations(gamepic)
                 category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=gameid)
         
         if exit_event.is_set():
             print("close")
+            deactivatebtn = False
             exit_event.clear()
             break

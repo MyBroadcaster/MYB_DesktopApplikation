@@ -28,7 +28,9 @@ export class TestingComponent implements OnInit {
   actbtn: boolean = true;
   login: boolean = false;
   themes: Themes[] | undefined;
+  processes: Processes[] | undefined;
   selectedThemes: Themes | undefined;
+  selectedProcess: Processes | undefined;
 
   ngOnInit(): void {
     this.themes = [
@@ -37,10 +39,47 @@ export class TestingComponent implements OnInit {
       { name: 'Dark Theme', themename: "dark_mode"},
       {name: "RangelRudi", themename: "rangelrudi"},
       {name: "Dreaon", themename: "dreaon_theme"}];
-      
+
+    this.processes = [{name: "Process"}]
 
     if (this.oauth_token){
       this.login = true
+    }
+    this.processlist()
+  }
+
+  async processlist(){
+    this.processes = []
+    this.processes = [{name: "Process"}]
+    let back = await eel.processlist_Scan()();
+    back.forEach((element: string) => {
+      this.processes?.push({name: element})
+    });
+  }
+
+  
+  async addgametoSQL(){
+    let entrydata: any = []
+    let exe: any = "";
+    exe = this.selectedProcess?.name;
+    if (exe == "Process")[
+      exe = (<HTMLInputElement>document.getElementById("dbexe")).value
+    ]
+    let gamename = (<HTMLInputElement>document.getElementById("dbname")).value
+    let gamecate = (<HTMLInputElement>document.getElementById("dbcategory")).value
+    entrydata.push(exe, gamename, gamecate)
+    if (entrydata.includes("")){
+      console.log("NO Commitet")
+    }
+    else{
+      console.log(gamecate)
+      let back = eel.twitchaprove(localStorage.getItem("oauthToken"), gamecate)
+      if (back != String){
+        //eel.addnewentry(exe, gamename, gamecate, " ")
+      }
+      else{
+        console.log("NO Commitet")
+      }
     }
   }
 

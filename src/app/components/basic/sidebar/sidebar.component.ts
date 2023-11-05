@@ -70,14 +70,6 @@ constructor(private router: Router) {
     this.currentUserName = localStorage.getItem('displayName') || "{}";
     this.currentUserPfp = localStorage.getItem('channelImage') || "{}"; 
 
-    eel.expose(change_acc_info);
-    function change_acc_info(logo: string, name:string){
-      var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
-      var twitch_name = <HTMLHeadingElement>document.querySelector(".twitch-name")
-      console.log(name, logo)
-      twitch_logo.src = logo
-      twitch_name.innerHTML = name
-    }
     this.menuItems = [
       {
         name: "Dashboard",
@@ -117,4 +109,13 @@ constructor(private router: Router) {
   }
   devids = ["147456736"]
   twitchid = localStorage.getItem("channelID") || "{}";
+}
+
+eel.expose(change_acc_info);
+function change_acc_info(logo: string, name:string){
+  var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
+  var twitch_name = <HTMLHeadingElement>document.querySelector(".twitch-name")
+  console.log(name, logo)
+  twitch_logo.src = logo
+  twitch_name.innerHTML = name
 }

@@ -1,7 +1,7 @@
 from requests.structures import CaseInsensitiveDict
 import json
 import requests
-from src.app.services.python.twitch_api import conf
+from src.app.services.python.twitch_api import conf, authentication
 
 def category_switch(twitchId: str,oauth_token: str, game_id: str):
     game_id = {"game_id": str(game_id)}
@@ -13,7 +13,7 @@ def category_switch(twitchId: str,oauth_token: str, game_id: str):
     headers["Content-Type"] = "application/json"
     data = y
     resp = requests.patch(url, headers=headers, data=data)
-    print(resp)
+
 
 def title_switch(twitchId: str,oauth_token: str, new_title: str):
     game = new_title
@@ -25,5 +25,4 @@ def title_switch(twitchId: str,oauth_token: str, new_title: str):
     headers["Client-Id"] = conf.CLIENT_ID
     headers["Content-Type"] = "application/json"
     data = y
-    print("title_switch")
     resp = requests.patch(url, headers=headers, data=data)

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     }
   }
-  backgroundmedia: string  = "https://static.videezy.com/system/resources/previews/000/040/575/original/Helloween_Background.mp4"
+  backgroundmedia: string  = "https://assets.mixkit.co/videos/preview/mixkit-big-autumn-tree-at-sunset-3d-animation-35270-large.mp4"
   backgroundmedia_alternative: string = "https://mybroadcaster.de/wp-content/uploads/2022/12/Kerfin7_NEA_2341.png"
 
   async twitchlogin(){

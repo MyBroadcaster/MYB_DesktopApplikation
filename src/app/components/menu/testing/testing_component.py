@@ -1,13 +1,26 @@
 import eel
 import psutil
+from src.app.components.functions.twitch.autobot import blacklist
 from src.app.services.python.mysql import k189647_autoswitcher
+from src.app.services.python.twitch_api import getChannelInfo
 threadloop = True
+
+
+@eel.expose
+def twitchaprove(categoryname:str, oauthtoken: str):
+    back = getChannelInfo.getCategoryByName(oauth_token=oauthtoken,categoryName=categoryname)
+    return back
+
+@eel.expose
+def addnewentry(prozess: str, anwendung: str, kategorie: str, window: str):
+    k189647_autoswitcher.addentry(prozess, anwendung, kategorie, window)
 
 @eel.expose
 def processlist_Scan():
     processlist=list()
     for process in psutil.process_iter():
-        processlist.append(process.name())
+        if process.name() not in blacklist.blacklist:
+            processlist.append(process.name())
     return processlist
 
 def processlist():
@@ -22,7 +35,6 @@ def processlist():
 
 @eel.expose
 def getautodb(item):
-    print(item)
     callback = k189647_autoswitcher.autobot_dbcall(item)
     return callback
 
