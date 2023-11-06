@@ -12,10 +12,12 @@ import { SidebarComponent } from './components/basic/sidebar/sidebar.component';
 import { DashboardComponent } from './components/menu/dashboard/dashboard.component';
 import { TestingComponent } from './components/menu/testing/testing.component';
 import { AccordionModule } from 'primeng/accordion';
+import { MessagesModule } from 'primeng/messages';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarModule } from 'primeng/sidebar';
+import { BlockUIModule } from 'primeng/blockui';
 import { DividerModule } from 'primeng/divider';
 import { TitlebarComponent } from './components/basic/titlebar/titlebar.component';
 import { MenuModule } from 'primeng/menu';
@@ -65,8 +67,10 @@ import { ImageModule } from 'primeng/image';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MessagesModule,
     ButtonModule,
     TableModule,
+    BlockUIModule,
     InputTextModule,
     AccordionModule,
     FontAwesomeModule,

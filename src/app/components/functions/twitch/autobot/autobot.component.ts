@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { asyncScheduler } from 'rxjs';
 import { eel } from 'src/app/app.component';
-
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-autobot',
   templateUrl: './autobot.component.html',
-  styleUrls: ['./autobot.component.scss']
+  styleUrls: ['./autobot.component.scss'],
+  providers: [MessageService]
 })
 
 export class AutobotComponent implements OnInit{
-  constructor(){}
+  constructor(private messageService: MessageService){}
   appImage : string = "https://static-cdn.jtvnw.net/ttv-boxart/417752-%7Bwidth%7Dx%7Bheight%7D.jpg";
   deactivatebtn = false;
 

@@ -113,7 +113,7 @@ constructor(private router: Router) {
 
 eel.expose(change_acc_info);
 function change_acc_info(logo: string, name:string){
-  var twitch_logo = <HTMLImageElement>document.querySelector(".twitch-pfp")
+  var twitch_logo = <HTMLImageElement>document.getElementById("twitch-pfp")
   var twitch_name = <HTMLHeadingElement>document.querySelector(".twitch-name")
   console.log(name, logo)
   twitch_logo.src = logo

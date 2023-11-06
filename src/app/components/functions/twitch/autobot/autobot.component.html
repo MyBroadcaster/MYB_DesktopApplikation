@@ -1,10 +1,11 @@
-<body>
+<body #pnl>
 <div>
     <h1>AutoBot</h1>
 </div>
 <div class="controlnav grid">
     <div class="control col">
-        <p-button label="Start Scan" [loading]="deactivatebtn" [disabled]="deactivatebtn" (click)="startbot()"></p-button>
+        <p-toast></p-toast>
+        <p-button pRipple label="Start Scan" [loading]="deactivatebtn" [disabled]="deactivatebtn" (click)="startbot()"></p-button>
         <p-button label="Stop Scan" [disabled]="!deactivatebtn" (click)="stopbot()"></p-button>
     </div>
 </div>
