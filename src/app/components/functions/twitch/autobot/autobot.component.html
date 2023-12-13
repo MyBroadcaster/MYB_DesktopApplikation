@@ -14,5 +14,9 @@
         <img id="appImage" [src]="appImage" alt="Image" width="400">
         <a id="appname"></a>
     </div>
+    <div class="col" style="justify-content: center; align-items: center;">
+        <input value="" id="defaultcategory" type="text" placeholder="Standardkategorie" pInputText/>
+        <p-button label="Stop Scan" [disabled]="!deactivatebtn" (click)="stopbot()"></p-button>
+    </div>
 </div>
 </body>
