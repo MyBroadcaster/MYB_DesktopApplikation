@@ -49,3 +49,20 @@ def threadtest():
 def stop_threadtest():
     global threadloop
     threadloop = False
+
+@eel.expose
+def globalbadgesAPI(oauthtoken: str):
+ globalbadges = getChannelInfo.getGlobalBadges(oauthtoken)
+ return globalbadges
+
+@eel.expose
+def channelbadgesAPI(oauthtoken: str, twitchid: str):
+    channelbadges = getChannelInfo.getchannelbadges(oauth_token=oauthtoken, twitchID=twitchid)
+    return channelbadges
+
+
+@eel.expose
+def globalEmoteAPI(oauthtoken: str):
+    globalemotes = getChannelInfo.getGlobalEmotes(oauth_token=oauthtoken)
+    print(globalemotes)
+    return globalemotes

@@ -1,0 +1,13 @@
+<div id="chat-box">
+    <div *ngFor="let message of messages" class="chat-message">
+    <span *ngIf="message.badges">
+        <img style="margin-right: 5px; margin-bottom: -4px;" *ngFor="let badge of getBadges(message.badges)" src="{{checkbadgesGlobal(badge)}}" [alt]="badge" />
+      </span>
+      <span [style.color]="message.color">{{ message.username }}:</span>
+        <span [innerHTML]="checkemotes(message.message)"></span>
+    </div>
+  </div>
+  <div>
+  <input [(ngModel)]="newMessage" placeholder="Type your message" pInputText/>
+  <button pButton (click)="sendMessage()">Send</button>
+</div>

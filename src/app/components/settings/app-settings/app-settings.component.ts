@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/angular/theme.service';
+import { LocaldataService } from 'src/app/services/angular/localdata.service';
 
 @Component({
   selector: 'app-app-settings',
@@ -7,7 +8,7 @@ import { ThemeService } from 'src/app/services/angular/theme.service';
   styleUrls: ['./app-settings.component.scss']
 })
 export class AppSettingsComponent implements OnInit {
-  constructor(public themeService: ThemeService){}
+  constructor(public themeService: ThemeService, public localData: LocaldataService){}
   themes: Themes[] | undefined;
   selectedThemes: Themes | undefined;
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class AppSettingsComponent implements OnInit {
   }
   changeTheme(){
     const thema = this.selectedThemes?.themename
-    localStorage.setItem('appstyle', thema!);
+    this.localData.saveData("appstyle",thema!)
     this.themeService.switchTheme(thema!)
   }
 }

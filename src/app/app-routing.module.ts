@@ -8,7 +8,7 @@ import { AppSettingsComponent } from './components/settings/app-settings/app-set
 import { AppsComponent } from './components/menu/apps/apps.component';
 import { AnalyticsComponent } from './components/menu/analytics/analytics.component';
 import { AutobotComponent } from './components/functions/twitch/autobot/autobot.component';
-import { TwitchChatComponent } from './components/functions/twitch/twitch-chat/twitch-chat.component';
+import { TwitchChatComponent } from './components/functions/twitch/twitch_chat/twitch-chat.component';
 
 const routes: Routes = [
   {path: "testing" ,component: TestingComponent},

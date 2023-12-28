@@ -8,3 +8,4 @@ from src.app.components.menu.testing import testing_component
 from src.app.components.menu.dashboard import dashboard_component
 from src.app.components.functions.twitch.autobot import autobot_component
 from src.app import app_component
+from src.app.components.functions.twitch.twitch_chat import twitch_chat_component

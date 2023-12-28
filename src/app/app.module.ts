@@ -29,9 +29,11 @@ import { AppsComponent } from './components/menu/apps/apps.component';
 import { AnalyticsComponent } from './components/menu/analytics/analytics.component';
 import { CardModule } from 'primeng/card';
 import { AutobotComponent } from './components/functions/twitch/autobot/autobot.component';
-import { TwitchChatComponent } from './components/functions/twitch/twitch-chat/twitch-chat.component';
+import { TwitchChatComponent } from './components/functions/twitch/twitch_chat/twitch-chat.component';
 import { SplitterModule } from 'primeng/splitter';
 import { ImageModule } from 'primeng/image';
+import { ScrollerModule } from 'primeng/scroller';
+
 
 
 
@@ -58,6 +60,7 @@ import { ImageModule } from 'primeng/image';
     BrowserModule,
     SplitterModule,
     ToastModule,
+    ScrollerModule,
     CardModule,
     ImageModule,
     CommonModule,

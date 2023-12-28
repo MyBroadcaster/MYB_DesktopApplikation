@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { eel } from 'src/app/app.component';
 import { MessageService } from 'primeng/api';
+import { LocaldataService } from 'src/app/services/angular/localdata.service';
 
 @Component({
   selector: 'app-autobot',
@@ -10,7 +11,7 @@ import { MessageService } from 'primeng/api';
 })
 
 export class AutobotComponent implements OnInit{
-  constructor(private messageService: MessageService){}
+  constructor(private messageService: MessageService, private localData: LocaldataService){}
   appImage : string = "https://static-cdn.jtvnw.net/ttv-boxart/417752-%7Bwidth%7Dx%7Bheight%7D.jpg";
   deactivatebtn = false;
 
@@ -31,11 +32,11 @@ export class AutobotComponent implements OnInit{
   }
 
   async getcurrentCategory(){
-    const infos = await eel.currentCategory(localStorage.getItem('oauthToken'),localStorage.getItem('channelID'))()
+    const infos = await eel.currentCategory(this.localData.getData("oauthToken"),this.localData.getData("channelID"))()
     return infos
   }
   async startbot(){
-    await eel.startbot(localStorage.getItem('channelID'),localStorage.getItem('oauthToken'), "Just Chatting")
+    await eel.startbot(this.localData.getData("channelID"),this.localData.getData("oauthToken"), "Just Chatting")
     this.deactivatebtn = true;
   }
   async stopbot(){

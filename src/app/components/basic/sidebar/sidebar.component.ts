@@ -1,6 +1,7 @@
 import { Component, OnInit,Input} from '@angular/core';
 import { Router,NavigationEnd  } from '@angular/router';
 import { eel } from 'src/app/app.component';
+import { LocaldataService } from 'src/app/services/angular/localdata.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,7 +15,7 @@ items = [{}];
 displayMaximizedSidebar = true;
 currentRoute: string;
 
-constructor(private router: Router) {
+constructor(private router: Router, private localData: LocaldataService) {
   this.currentRoute = this.router.url;
 }
   public currentUserName: string = "";
@@ -47,7 +48,7 @@ constructor(private router: Router) {
                 label: 'LogOut',
                 icon: 'fa-solid fa-right-from-bracket',
                 command: () => {
-                  localStorage.clear();
+                  this.localData.clearData()
                   this.router.navigate(["/"])
               }
             }
@@ -67,8 +68,8 @@ constructor(private router: Router) {
         
       }
     });
-    this.currentUserName = localStorage.getItem('displayName') || "{}";
-    this.currentUserPfp = localStorage.getItem('channelImage') || "{}"; 
+    this.currentUserName = this.localData.getData('displayName') || "{}";
+    this.currentUserPfp = this.localData.getData('channelImage') || "{}"; 
 
     this.menuItems = [
       {
@@ -108,7 +109,7 @@ constructor(private router: Router) {
     ];
   }
   devids = ["147456736"]
-  twitchid = localStorage.getItem("channelID") || "{}";
+  twitchid = this.localData.getData("channelID") || "{}";
 }
 
 eel.expose(change_acc_info);
