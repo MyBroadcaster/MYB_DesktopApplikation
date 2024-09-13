@@ -1,7 +1,7 @@
 <p-sidebar [(visible)]="displayMaximizedSidebar" position="left" [modal]="false" styleClass="prime-sidebar" id="prime-sidebar" [showCloseIcon]="false">
     <ng-template pTemplate="header">
       <div class="flex flex-column justify-content-center align-items-center">
-        <img class="twitch-pfp" [src]="currentUserPfp">
+        <img id="twitch-pfp" [src]="currentUserPfp">
         <p-menu #menu [model]="items" [popup]="true"></p-menu>
         <p-button  id="profilbtn" type="button" icon="fa-solid fa-gear" iconPos="right" (click)="menu.toggle($event)" label="{{currentUserName | uppercase}}">
         </p-button>

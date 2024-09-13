@@ -121,6 +121,40 @@
             <p-dropdown [options]="themes" [(ngModel)]="selectedThemes" (onChange)="changeTheme()" optionLabel="name"></p-dropdown>
     </div>
     </p-accordionTab>
+    <p-accordionTab header="Add new Game">
+        <div>
+            <input style="margin-left: 15px; margin-right: 15px;" value="" id="dbexe" type="text" placeholder="game.exe" pInputText/>
+            <a>oder </a>
+            <p-dropdown [options]="processes" [(ngModel)]="selectedProcess" optionLabel="name"></p-dropdown>
+            <p-button id="Multithreading" (click)="processlist()" icon="fa-solid fa-rotate-right" ></p-button>
+            <input style="margin-left: 15px; margin-right: 15px;" value="" id="dbname" type="text" placeholder="gamename" pInputText/>
+            <input style="margin-left: 15px; margin-right: 15px;" value="" id="dbcategory" type="text" placeholder="Twitch-Category" pInputText/>
+            <p-button id="Multithreading" (click)="addgametoSQL()" >Add to Database</p-button>
+    </div>
+    </p-accordionTab>
+    <p-accordionTab header="TwitchAPI" style="height: 50px !important;">
+        <div style="width: 100px;">
+            <div class="grid">
+                <div class="col">
+            <p-button (click)="checkbadgesGlobal()" icon="fa-solid fa-rotate-right" >Badges Global</p-button>
+                </div>
+            <div class="col">
+            <p-button (click)="checkbadgesChannel()" icon="fa-solid fa-rotate-right" >Channel Badges</p-button>
+            </div>
+            <div class="col">
+                <p-button (click)="checkglobalemotes()" icon="fa-solid fa-rotate-right" >Global Emotes</p-button>
+                </div>
+            </div>
+            <div class="grid"></div>
+                <ng-container *ngFor="let item of badges">
+                    <div class="col-fixed" style="width:100px">
+                        <div class="text-center border-round-sm bg-primary p-3 font-bold" *ngFor="let itemquell of item.versions">
+                        <img src="{{itemquell.image_url_2x}}"><a>{{itemquell.title}}</a>
+                    </div>
+                    </div>
+                </ng-container>
+            </div>
+    </p-accordionTab>
 </p-accordion>
 </div>
 

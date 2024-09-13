@@ -11,7 +11,8 @@ import {  botsetting, gamemeta } from 'src/app/enviroments/autobot';
 @Component({
   selector: 'app-autobot',
   templateUrl: './autobot.component.html',
-  styleUrls: ['./autobot.component.scss']
+  styleUrls: ['./autobot.component.scss'],
+  providers: [MessageService]
 })
 export class AutobotComponent implements OnInit {
 categorytitle: any;

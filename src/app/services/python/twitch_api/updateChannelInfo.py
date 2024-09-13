@@ -1,7 +1,7 @@
 from requests.structures import CaseInsensitiveDict
 import json
 import requests
-from src.app.services.python.twitch_api import conf
+from src.app.services.python.twitch_api import conf, authentication
 
 def category_switch(twitchId: str,oauth_token: str, game_id: str):
     game_id = {"game_id": str(game_id)}

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { gamemeta, botsetting } from './enviroments/autobot';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from 'src/app/services/angular/theme.service';
-import { gamemeta, botsetting } from './enviroments/autobot';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(["/dashboard"])
     }
     try{
-    this.themeService.switchTheme(localStorage.getItem("appstyle") || "{default}") }
+    this.themeService.switchTheme(localStorage.getItem("appstyle") || "default") }
     catch{
       this.themeService.switchTheme("default")
     }
@@ -34,8 +35,4 @@ export class AppComponent implements OnInit {
 
 export const eel = (window as any).eel
 eel.set_host( 'ws://localhost:8000' )
-
-eel.expose(autobotdataset);
-function autobotdataset(images: string){
-  gamemeta.image = images
-}
+console.log(eel);

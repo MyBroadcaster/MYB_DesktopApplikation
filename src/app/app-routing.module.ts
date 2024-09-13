@@ -8,9 +8,10 @@ import { AppSettingsComponent } from './components/settings/app-settings/app-set
 import { AppsComponent } from './components/menu/apps/apps.component';
 import { AnalyticsComponent } from './components/menu/analytics/analytics.component';
 import { AutobotComponent } from './components/functions/twitch/autobot/autobot.component';
-import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
 import { AdminsiteComponent } from './components/adminsite/adminsite.component';
 import { GameDatabaseComponent } from './components/admin/gamedatabase/game-database.component';
+import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
+
 const routes: Routes = [
   {path: "testing" ,component: TestingComponent},
   {path: "dashboard" ,component: DashboardComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

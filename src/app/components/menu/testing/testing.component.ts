@@ -3,6 +3,8 @@ import { eel } from 'src/app/app.component';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { ThemeService } from 'src/app/services/angular/theme.service';
+import { LocaldataService } from 'src/app/services/angular/localdata.service';
+
 
 interface Themes {
   name: string;
@@ -16,19 +18,22 @@ interface Themes {
   styleUrls: ['./testing.component.scss']
 })
 export class TestingComponent implements OnInit {
-  constructor(private messageService: MessageService, private router: Router, private themeService: ThemeService) {}
+  constructor(private messageService: MessageService, private router: Router, private themeService: ThemeService, private localData: LocaldataService) {}
 
   listarray : any;
   listarray_leng : any  = 0
   header : any;
   dbvalue: any = "";
-  oauth_token : any = localStorage.getItem("oauth_token")
-  refresh_token : any = localStorage.getItem("refresh_token")
+  oauth_token : any = this.localData.getData('oauthToken')
+  refresh_token : any = this.localData.getData("refreshToken")
   loading: boolean = false;
   actbtn: boolean = true;
   login: boolean = false;
   themes: Themes[] | undefined;
+  processes: Processes[] | undefined;
   selectedThemes: Themes | undefined;
+  selectedProcess: Processes | undefined;
+  badges:any
 
   ngOnInit(): void {
     this.themes = [
@@ -37,10 +42,47 @@ export class TestingComponent implements OnInit {
       { name: 'Dark Theme', themename: "dark_mode"},
       {name: "RangelRudi", themename: "rangelrudi"},
       {name: "Dreaon", themename: "dreaon_theme"}];
-      
+
+    this.processes = [{name: "Process"}]
 
     if (this.oauth_token){
       this.login = true
+    }
+    this.processlist()
+  }
+
+  async processlist(){
+    this.processes = []
+    this.processes = [{name: "Process"}]
+    let back = await eel.processlist_Scan()();
+    back.forEach((element: string) => {
+      this.processes?.push({name: element})
+    });
+  }
+
+  
+  async addgametoSQL(){
+    let entrydata: any = []
+    let exe: any = "";
+    exe = this.selectedProcess?.name;
+    if (exe == "Process")[
+      exe = (<HTMLInputElement>document.getElementById("dbexe")).value
+    ]
+    let gamename = (<HTMLInputElement>document.getElementById("dbname")).value
+    let gamecate = (<HTMLInputElement>document.getElementById("dbcategory")).value
+    entrydata.push(exe, gamename, gamecate)
+    if (entrydata.includes("")){
+      console.log("NO Commitet")
+    }
+    else{
+      console.log(gamecate)
+      let back = eel.twitchaprove(this.localData.getData('oauthToken'), gamecate)
+      if (back != String){
+        //eel.addnewentry(exe, gamename, gamecate, " ")
+      }
+      else{
+        console.log("NO Commitet")
+      }
     }
   }
 
@@ -50,6 +92,7 @@ export class TestingComponent implements OnInit {
     this.listarray = back
     this.listarray_leng = back.length
   }
+
   async threading(){
     let btntext = <HTMLTextAreaElement>document.getElementById("Multithreading")
     let back = await eel.threadtest()();
@@ -64,7 +107,7 @@ export class TestingComponent implements OnInit {
   }
 
   clearLocalStorage(){
-    localStorage.clear();
+    this.localData.clearData()
     this.router.navigate(['']);
 }
 

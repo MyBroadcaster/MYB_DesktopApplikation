@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router,NavigationEnd  } from '@angular/router';
+import { LocaldataService } from 'src/app/services/angular/localdata.service';
 
 @Component({
   selector: 'app-apps',
@@ -7,13 +8,13 @@ import { Router,NavigationEnd  } from '@angular/router';
   styleUrls: ['./apps.component.scss']
 })
 export class AppsComponent {
-  constructor(private router: Router){}
+  constructor(private router: Router, private localData: LocaldataService){}
 
 changetoapp(path: string){
   this.router.navigate([path])
 }
 
-twitchid = localStorage.getItem("channelID") || "{}";
+twitchid = this.localData.getData("channelID") || "{}";
 devids = ["147456736"]
 
 cardItems: any =[{

@@ -1,5 +1,5 @@
-<p-card id="twitchcard" header="Twitch">
-    <div class="grid shadow-4">
+<p-card  class="shadow-4" id="twitchcard" header="Twitch">
+    <div class="grid">
     <ng-container *ngFor="let item of cardItems; let i = index">
     <div class="col-3" (click)="changetoapp(item.approute)" *ngIf="item.public == true || devids.includes(twitchid)">
     <p-card id="appfeature_twcard" class="{{item.styleclass}}" header="{{item.functionname}}">

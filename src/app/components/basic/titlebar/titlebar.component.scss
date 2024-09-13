@@ -7,14 +7,14 @@ body {
     display: block;
     padding: 4px;
     position: fixed;
-    height: 32px;
+    height: 30px;
     width: 100%;
     color: #FFF;
     width: calc(100% - 2px); /*Compensate for body 1px border*/
     background: #212121;;
   }
   #titlebar #drag-region {
-    width: 90%;
+    width: 95.5%;
     height: 100%;
     -webkit-app-region: drag;
   }

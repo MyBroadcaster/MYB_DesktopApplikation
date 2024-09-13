@@ -1,20 +1,25 @@
-<body>
+<body #pnl>
 <div>
     <h1>AutoBot</h1>
 </div>
-<div class="controlnav grid shadow-4">
+<div class="controlnav grid">
     <div class="control col">
-        <p-button label="Start Scan" [loading]="deactivatebtn" [disabled]="deactivatebtn" (onClick)="startbot()"></p-button>
-        <p-button label="Stop Scan" [disabled]="!deactivatebtn" (onClick)="stopbot()"></p-button>
+        <p-toast></p-toast>
+        <p-button pRipple label="Start Scan" [loading]="deactivatebtn" [disabled]="deactivatebtn" (click)="startbot()"></p-button>
+        <p-button label="Stop Scan" [disabled]="!deactivatebtn" (click)="stopbot()"></p-button>
     </div>
 </div>
-<div class="controlnav grid shadow-4">
+<div class="controlnav grid">
     <div class="col">
         <img id="appImage" [src]="appImage" alt="Image" width="400">
     </div>
     <div class="col">
         <h3>Kategorie:</h3>
         <h4 id="appname">{{categorytitle}}</h4>
+    </div>
+    <div class="col" style="justify-content: center; align-items: center;">
+        <input value="" id="defaultcategory" type="text" placeholder="Standardkategorie" pInputText/>
+        <p-button label="Stop Scan" [disabled]="!deactivatebtn" (click)="stopbot()"></p-button>
     </div>
 </div>
 </body>

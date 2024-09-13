@@ -12,13 +12,13 @@ import { SidebarComponent } from './components/basic/sidebar/sidebar.component';
 import { DashboardComponent } from './components/menu/dashboard/dashboard.component';
 import { TestingComponent } from './components/menu/testing/testing.component';
 import { AccordionModule } from 'primeng/accordion';
+import { MessagesModule } from 'primeng/messages';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarModule } from 'primeng/sidebar';
+import { BlockUIModule } from 'primeng/blockui';
 import { DividerModule } from 'primeng/divider';
-import { MessagesModule } from 'primeng/messages';
-
 import { TitlebarComponent } from './components/basic/titlebar/titlebar.component';
 import { MenuModule } from 'primeng/menu';
 import { DropdownModule } from 'primeng/dropdown';
@@ -29,12 +29,14 @@ import { AppsComponent } from './components/menu/apps/apps.component';
 import { AnalyticsComponent } from './components/menu/analytics/analytics.component';
 import { CardModule } from 'primeng/card';
 import { AutobotComponent } from './components/functions/twitch/autobot/autobot.component';
-import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
 import { SplitterModule } from 'primeng/splitter';
+import { ScrollerModule } from 'primeng/scroller';
 import { ImageModule } from 'primeng/image';
 import { AdminsiteComponent } from './components/adminsite/adminsite.component';
 import { GameDatabaseComponent } from './components/admin/gamedatabase/game-database.component';
 import { CheckboxModule } from 'primeng/checkbox';
+
+
 
 
 
@@ -53,7 +55,6 @@ import { CheckboxModule } from 'primeng/checkbox';
     AppsComponent,
     AnalyticsComponent,
     AutobotComponent,
-    TwitchChatComponent,
     AdminsiteComponent,
     GameDatabaseComponent,
     
@@ -63,6 +64,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     BrowserModule,
     SplitterModule,
     ToastModule,
+    ScrollerModule,
     CardModule,
     ImageModule,
     CommonModule,
@@ -74,8 +76,10 @@ import { CheckboxModule } from 'primeng/checkbox';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MessagesModule,
     ButtonModule,
     TableModule,
+    BlockUIModule,
     InputTextModule,
     AccordionModule,
     FontAwesomeModule,
