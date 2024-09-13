@@ -1,1 +1,3 @@
-<p>app-settings works!</p>
+<div>
+    <p-dropdown [options]="themes" [(ngModel)]="selectedThemes" (onChange)="changeTheme()" optionLabel="name"></p-dropdown>
+</div>

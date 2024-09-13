@@ -2,7 +2,7 @@ import eel
 import threading
 from src.app.services.python.mysql import k189647_autoswitcher
 from src.app.services.python.system import get_system_processes
-from src.app.components.functions.twitch.autobot import blacklist
+from src.app.services.python.system import scan_blacklist as blacklist
 from src.app.services.python.twitch_api.getChannelInfo import getCategoryByName
 from src.app.services.python.twitch_api.updateChannelInfo import category_switch
 
@@ -54,17 +54,21 @@ def autobot(twitchID:str, oauthtoken: str):
                         continue
                     else:
                         activecategory = data[0][3]
-                        gameid, gamepic = getCategoryByName(oauth_token=oauthtoken,categoryName=data[0][3])
-                        eel.updateInformations(gamepic)
-                        category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=gameid)
+                        game = getCategoryByName(oauth_token=oauthtoken,categoryName=data[0][3])
+                        img = game[0]["box_art_url"].replace("-{width}x{height}", "")
+                        eel.updateInformations(img, game[0]["name"])
+                        eel.autobotdataset(img)
+                        category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=game[0]["id"])
                         
         
         if found == False:
             if activecategory != defaultcategory:
                 activecategory = defaultcategory
-                gameid, gamepic = getCategoryByName(oauth_token=oauthtoken,categoryName=defaultcategory)
-                eel.updateInformations(gamepic)
-                category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=gameid)
+                game = getCategoryByName(oauth_token=oauthtoken,categoryName=defaultcategory)
+                img = game[0]["box_art_url"].replace("-{width}x{height}", "")
+                eel.updateInformations(img, game[0]["name"])
+                eel.autobotdataset(img)
+                category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=game[0]["id"])
         
         if exit_event.is_set():
             print("close")

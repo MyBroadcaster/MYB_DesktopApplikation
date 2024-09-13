@@ -1,13 +1,12 @@
 import eel
 import psutil
 from src.app.services.python.mysql import k189647_autoswitcher
+from src.app.services.python.system.get_system_processes import processlist_Scan
 threadloop = True
 
 @eel.expose
-def processlist_Scan():
-    processlist=list()
-    for process in psutil.process_iter():
-        processlist.append(process.name())
+def processlistsc():
+    processlist= processlist_Scan()
     return processlist
 
 def processlist():

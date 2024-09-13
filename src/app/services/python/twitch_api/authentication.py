@@ -12,7 +12,6 @@ async def authentication():
     auth = UserAuthenticator(twitch, target_scope, force_verify=True)
     token, refresh_token = await auth.authenticate()
     await twitch.set_user_authentication(token, target_scope, refresh_token)
-    print(token)
     return token, refresh_token
 
 

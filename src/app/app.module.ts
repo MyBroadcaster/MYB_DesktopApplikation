@@ -17,6 +17,8 @@ import { ToastModule } from 'primeng/toast';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarModule } from 'primeng/sidebar';
 import { DividerModule } from 'primeng/divider';
+import { MessagesModule } from 'primeng/messages';
+
 import { TitlebarComponent } from './components/basic/titlebar/titlebar.component';
 import { MenuModule } from 'primeng/menu';
 import { DropdownModule } from 'primeng/dropdown';
@@ -27,9 +29,12 @@ import { AppsComponent } from './components/menu/apps/apps.component';
 import { AnalyticsComponent } from './components/menu/analytics/analytics.component';
 import { CardModule } from 'primeng/card';
 import { AutobotComponent } from './components/functions/twitch/autobot/autobot.component';
-import { TwitchChatComponent } from './components/functions/twitch/twitch-chat/twitch-chat.component';
+import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
 import { SplitterModule } from 'primeng/splitter';
 import { ImageModule } from 'primeng/image';
+import { AdminsiteComponent } from './components/adminsite/adminsite.component';
+import { GameDatabaseComponent } from './components/admin/gamedatabase/game-database.component';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 
@@ -49,6 +54,8 @@ import { ImageModule } from 'primeng/image';
     AnalyticsComponent,
     AutobotComponent,
     TwitchChatComponent,
+    AdminsiteComponent,
+    GameDatabaseComponent,
     
   ],
   imports: [
@@ -61,7 +68,9 @@ import { ImageModule } from 'primeng/image';
     CommonModule,
     SidebarModule,
     MenuModule,
+    MessagesModule,
     DropdownModule,
+    CheckboxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,

@@ -1,0 +1,13 @@
+.chat-message {
+    margin-bottom: 5px;
+  }
+
+#chat-box{
+    height: 800px; /* Höhe der Chatbox */
+    overflow-y: scroll; /* Scrollbalken anzeigen, wenn der Inhalt zu groß ist */
+    border: 1px solid #ccc; /* Optional: Rand für die Chatbox */
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: -5px;
+}

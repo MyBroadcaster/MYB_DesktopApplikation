@@ -1,0 +1,113 @@
+<button pButton label="Back" (click)="navigate()"></button>
+
+<div class="card">
+    <p-table
+    #dt1
+    [value]="games"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="100"
+    [scrollable]="true" 
+    [loading]="loadtable"
+    scrollHeight="1000px" 
+    [globalFilterFields]="['ID']"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50, 100]" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let head of header; let i = index">
+                    {{head}}
+                    <ng-container *ngIf="head != ''">
+                    <p-columnFilter type="text" field="{{head}}" display="menu"></p-columnFilter>
+                </ng-container>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-games let-editing="editing">
+            <tr>
+                <td >
+                    {{ games.ID }}
+                    </td>
+                    <td [pEditableColumn]="games.Anwendung" pEditableColumnField="Anwendung">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input 
+                                    pInputText 
+                                    type="text" 
+                                    [(ngModel)]="games.Anwendung" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ games.Anwendung }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="games.Prozess" pEditableColumnField="Prozess">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input 
+                                    pInputText 
+                                    type="text" 
+                                    [(ngModel)]="games.Prozess" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ games.Prozess }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="games.Kategorie" pEditableColumnField="Kategorie">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input 
+                                    pInputText 
+                                    type="text" 
+                                    [(ngModel)]="games.Kategorie" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ games.Kategorie }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="games.Window" pEditableColumnField="Window">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input 
+                                    pInputText 
+                                    type="text" 
+                                    [(ngModel)]="games.Window" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ games.Window }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-checkbox name="groupname" value="val1" (onChange)="deletedrows(games.ID)"></p-checkbox>
+                    </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <button pButton label="Delete Checks" (click)="deletegame()"></button>
+        </ng-template>
+    </p-table>
+</div>
+<div class="card">
+    <h3>Add new Entry:</h3>
+    <input pInputText placeholder="Gametitle" [(ngModel)]="new_game.title">
+    <input pInputText placeholder="Twitchtitle" [(ngModel)]="new_game.category">
+    <ng-container *ngIf="scanprocess === false ,else noCourses">
+        <input pInputText placeholder="Executable" [(ngModel)]="new_game.executable">
+    </ng-container>
+    <ng-template #noCourses>
+        <p-dropdown 
+        [options]="processes" 
+        [(ngModel)]="new_game.executable" 
+        placeholder="Select a City" />
+    
+    </ng-template>
+    <button pButton icon="fa-brands fa-nfc-symbol" (click)="scanprocessstart()"></button>
+    <input pInputText placeholder="Window"[(ngModel)]="new_game.window">
+    <button pButton label="Upload" (click)="addnewgame()"></button>
+</div>
+<p-toast></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>

@@ -45,8 +45,7 @@ export class TestingComponent implements OnInit {
   }
 
   async tryeel(){
-    let back = await eel.processlist_Scan()();
-    console.log(back)
+    let back = await eel.processlistsc()();
     this.header = ["Prozesse"]
     this.listarray = back
     this.listarray_leng = back.length
@@ -57,11 +56,9 @@ export class TestingComponent implements OnInit {
     this.messageService.add({key: 'tc', severity: 'success', summary: 'Erfolgreich', detail: 'Thread gestartet' });
     this.loading = true;
     this.actbtn = false;
-    console.log(btntext)
   }
   changeTheme(){
     const thema = this.selectedThemes?.themename
-    console.log(thema!)
     localStorage.setItem('appstyle', thema!);
     this.themeService.switchTheme(thema!)
   }
@@ -77,7 +74,6 @@ export class TestingComponent implements OnInit {
     this.messageService.add({key: 'tc', severity: 'error', summary: 'Error', detail: 'Thread gestoppt' });
     this.loading = false;
     this.actbtn = true;
-    console.log(back)
   }
 
   async autoBotDb(){
@@ -85,21 +81,17 @@ export class TestingComponent implements OnInit {
     this.header = ["ID", "Executable", "Anwendung", "Kategorie","Window"]
     this.listarray = apps
     this.listarray_leng = apps.length
-    console.log(apps)
   }
 
   async autoBotDb_Specific(){
     this.dbvalue = <HTMLTextAreaElement>document.getElementById("dbinput")
-    console.log(this.dbvalue.value)
     let apps = await eel.getautodb(this.dbvalue.value)();
     this.header = ["ID", "Executable", "Anwendung", "Kategorie","Window"]
     this.listarray = apps
-    console.log(apps)
   }
   async twitchlogin(){
     let back = await eel.tw_Login()();
     this.oauth_token = back[0]
     this.refresh_token = back[1]
-    console.log(back)
   }
 }

@@ -44,13 +44,13 @@ cardItems: any =[{
   styleclass: "raid_gallery",
   public: false,
 },
-{
-  functionname: "Twitch Chat",
-  description: "Chat",
-  approute: "/twitchchat",
-  styleclass: "twitch_chat",
-  public: true,
-},
+// {
+//   functionname: "Twitch Chat",
+//   description: "Chat",
+//   approute: "/twitchchat",
+//   styleclass: "twitch_chat",
+//   public: true,
+// },
 ]
 
 youtItems: any =[{

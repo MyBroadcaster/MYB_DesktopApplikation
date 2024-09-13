@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from 'src/app/services/angular/theme.service';
-
+import { gamemeta, botsetting } from './enviroments/autobot';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -34,4 +34,8 @@ export class AppComponent implements OnInit {
 
 export const eel = (window as any).eel
 eel.set_host( 'ws://localhost:8000' )
-console.log(eel);
+
+eel.expose(autobotdataset);
+function autobotdataset(images: string){
+  gamemeta.image = images
+}

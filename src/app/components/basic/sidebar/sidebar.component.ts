@@ -1,7 +1,7 @@
 import { Component, OnInit,Input} from '@angular/core';
 import { Router,NavigationEnd  } from '@angular/router';
 import { eel } from 'src/app/app.component';
-
+import { SharedatabetweencomponentsService } from 'src/app/services/angular/sharedatabetweencomponents.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -14,17 +14,23 @@ items = [{}];
 displayMaximizedSidebar = true;
 currentRoute: string;
 
-constructor(private router: Router) {
+constructor(private router: Router, private sharedService: SharedatabetweencomponentsService) {
   this.currentRoute = this.router.url;
 }
-  public currentUserName: string = "";
+  public currentUserName: any;
   public test: boolean = true;
-  public currentUserPfp: string = "";
+  public currentUserPfp: any;
   public menuItems: SidebarMenuItem[] | undefined;
   public goToSidebarRoute(menuItem: SidebarMenuItem) {
     this.router.navigate([menuItem.path]);
   }
   ngOnInit(): void {
+    this.sharedService.currentPBImage.subscribe((img) => {
+      this.currentUserPfp = img;
+    });
+    this.sharedService.currentPBUsername.subscribe((username) => {
+      this.currentUserName = username;
+    });
     this.items = [
       {
           label: 'Options',
@@ -102,12 +108,13 @@ constructor(private router: Router) {
         path: "/testing",
         icon: "bx bx-code-alt",
         public: false
-      }
-      //{
-      //  name: "Benachrichtigungen",
-      //  path: "",
-      //  icon: "bx bxs-bell"
-      //},
+      },
+      {
+       name: "Admin",
+       path: "/administration",
+       icon: "bx bxs-bell",
+       public: false
+      },
       //{
       //  name: "Einstellungen",
       //  path: "",

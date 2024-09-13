@@ -23,8 +23,56 @@ def getCategoryByName(oauth_token: str,categoryName: str):
     headers["Authorization"] = "Bearer " + oauth_token
     headers["Client-Id"] = conf.CLIENT_ID
     resp = requests.get(url, headers=headers)
-    test = resp.json()["data"]
-    id = test[0]["id"]
-    picture = test[0]["box_art_url"]
-    picture = picture.replace("-{width}x{height}", "")
-    return id, picture
+    if resp.status_code != 200:
+        return resp.status_code
+    else:
+        return resp.json()["data"]
+
+def getChannelInformations(oauth_token: str, twitchID: str):
+    url = "https://api.twitch.tv/helix/channels?broadcaster_id=" + twitchID
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = "Bearer " + oauth_token
+    headers["Client-Id"] = conf.CLIENT_ID
+    resp = requests.get(url, headers=headers)
+    if resp.status_code != 200:
+         return resp.status_code
+    else:
+        data = resp.json()["data"]
+        return data
+    
+
+def getchannelbadges(oauth_token: str, twitchID: str):
+    url = "https://api.twitch.tv/helix/chat/badges?broadcaster_id=" + twitchID
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = "Bearer " + oauth_token
+    headers["Client-Id"] = conf.CLIENT_ID
+    resp = requests.get(url, headers=headers)
+    if resp.status_code != 200:
+         return resp.status_code
+    else:
+        data = resp.json()["data"]
+        return data
+    
+def getGlobalBadges(oauth_token: str):
+    url = "https://api.twitch.tv/helix/chat/badges/global"
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = "Bearer " + oauth_token
+    headers["Client-Id"] = conf.CLIENT_ID
+    resp = requests.get(url, headers=headers)
+    if resp.status_code != 200:
+         return resp.status_code
+    else:
+        data = resp.json()["data"]
+        return data
+    
+def getGlobalEmotes(oauth_token: str):
+    url = "https://api.twitch.tv/helix/chat/emotes/global"
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = "Bearer " + oauth_token
+    headers["Client-Id"] = conf.CLIENT_ID
+    resp = requests.get(url, headers=headers)
+    if resp.status_code != 200:
+         return resp.status_code
+    else:
+        data = resp.json()["data"]
+        return data
