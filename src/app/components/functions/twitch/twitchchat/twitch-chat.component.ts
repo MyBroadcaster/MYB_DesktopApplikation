@@ -1,4 +1,4 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { TwitchChatService } from '../../../../services/angular/twitch-chat.service';
 import { eel } from 'src/app/app.component';
 
@@ -11,7 +11,7 @@ import { eel } from 'src/app/app.component';
 
 export class TwitchChatComponent implements OnInit {
   messages: { username: string; message: string; color: string; badges: any }[] = [];
-  newMessage: string = '';
+  newMessage: any
   badges: any
   back: any
   emoteglobal: any

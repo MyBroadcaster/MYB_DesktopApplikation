@@ -69,7 +69,7 @@ def autobot(twitchID:str, oauthtoken: str):
                         game = getCategoryByName(oauth_token=oauthtoken,categoryName=data[0][3])
                         img = game[0]["box_art_url"].replace("-{width}x{height}", "")
                         eel.updateInformations(img, game[0]["name"])
-                        eel.autobotdataset(img)
+                        #eel.autobotdataset(img)
                         category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=game[0]["id"])
                         
         
@@ -79,7 +79,7 @@ def autobot(twitchID:str, oauthtoken: str):
                 game = getCategoryByName(oauth_token=oauthtoken,categoryName=defaultcategory)
                 img = game[0]["box_art_url"].replace("-{width}x{height}", "")
                 eel.updateInformations(img, game[0]["name"])
-                eel.autobotdataset(img)
+                #eel.autobotdataset(img)
                 category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=game[0]["id"])
         
         if exit_event.is_set():

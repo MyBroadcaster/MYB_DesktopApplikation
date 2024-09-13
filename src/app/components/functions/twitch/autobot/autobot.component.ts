@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { eel } from 'src/app/app.component';
 import { SharedatabetweencomponentsService } from 'src/app/services/angular/sharedatabetweencomponents.service';
 import {  botsetting, gamemeta } from 'src/app/enviroments/autobot';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-autobot',
   templateUrl: './autobot.component.html',

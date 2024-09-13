@@ -35,7 +35,7 @@ import { ImageModule } from 'primeng/image';
 import { AdminsiteComponent } from './components/adminsite/adminsite.component';
 import { GameDatabaseComponent } from './components/admin/gamedatabase/game-database.component';
 import { CheckboxModule } from 'primeng/checkbox';
-
+import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
 
 
 
@@ -52,6 +52,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     TitlebarComponent,
     AccountSettingsComponent,
     AppSettingsComponent,
+    TwitchChatComponent,
     AppsComponent,
     AnalyticsComponent,
     AutobotComponent,
