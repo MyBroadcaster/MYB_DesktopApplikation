@@ -1,0 +1,122 @@
+<p>usermanagment works!</p>
+
+<div>
+<input pInputText [(ngModel)]="tw_name" placeholder="Search Twitchuser" required="true">
+<button pButton label="Suchen" (click)="getinfos()"></button>
+</div>
+
+<p-accordion [activeIndex]="activindex">
+    <p-accordionTab header="Informationen">
+        <div class="card">
+            <div class="formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <label for="twname">Twitchname:</label>
+                    <a id="fwname" type="text" class="p-2  w-full">{{tw_name}}</a>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label for="pb_image">Bild:</label>
+                    <img id="pb_image" class="p-2" style="height: 100%; width: 100px;" [src]="pbimage">
+                </div>
+                <div class="field col-12">
+                    <label for="description">Beschreibung:</label>
+                    <a id="description" type="text" class="p-2  w-full">{{description}}</a>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label for="twid">ID:</label>
+                    <a id="twid" type="text" class="p-2  w-full">{{twitch_id}}</a>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label for="permissions">Berechtigung:</label>
+                    <p-dropdown 
+                    id="permissions"
+                    [options]="permissions" 
+                    [(ngModel)]="selected_permission" 
+                    placeholder="Berechtigung..." />
+                </div>
+            </div>
+            <button pButton label="Hinzufügen" (click)="adduser()"></button>
+        </div>
+    </p-accordionTab>
+</p-accordion>
+
+<div class="card">
+    <p-table
+        #dt2
+        [value]="userset"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'id', 'tw_id', 'permission']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+    <ng-template pTemplate="caption">
+        <div class="flex">
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:22%">ID </th>
+            <th style="width:12%"> </th>
+            <th style="width:22%">Name</th>
+            <th style="width:22%">Twitch-ID</th>
+            <th style="width:22%">Berechtigung</th>
+        </tr>
+        <tr>
+            <th>
+                <p-columnFilter 
+                    type="text"
+                    [useGrouping]="false"
+                    field="ID"
+                    placeholder="Search by ID" 
+                    ariaLabel="Filter ID" />
+            </th>
+            <th></th>
+            <th>
+                <p-columnFilter 
+                    type="text"
+                    field="name" 
+                    placeholder="Search by Name" 
+                    ariaLabel="Filter Name" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text"
+                    [useGrouping]="false"
+                    field="tw_id"
+                    placeholder="Search by Twitch-ID" 
+                    ariaLabel="Filter Twitch-ID" />
+            </th>
+            <th>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-people>
+        <tr>
+            <td>
+                {{ people.id }}
+            </td>
+            <td>
+                <img 
+                    src= {{people.image}}  
+                    style="width: 50px; height: 100%; border-radius: 20px;" />
+            </td>
+            <td>
+                {{ people.name }}
+            </td>
+            <td>
+                {{ people.tw_id }}
+            </td>
+            <td>
+                {{ people.permission }}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5">Keine User gefunden.</td>
+        </tr>
+    </ng-template>
+    </p-table>
+</div>

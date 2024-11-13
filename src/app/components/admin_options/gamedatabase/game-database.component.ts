@@ -21,11 +21,16 @@ export class GameDatabaseComponent implements OnInit{
   processes: any[]|undefined;
   btnloadscan = false
   loadbtn: boolean = false
+selectedgame: any;
   constructor(private router: Router, private messageService: MessageService) {}
 
   games : any
   async ngOnInit(){
     await this.autoBotDb()
+  }
+
+  selectgame(){
+    console.log(this.selectedgame)
   }
 
   async scanprocessstart() {

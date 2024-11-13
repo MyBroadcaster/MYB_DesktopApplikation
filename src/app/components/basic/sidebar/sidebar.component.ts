@@ -104,15 +104,9 @@ constructor(private router: Router, private sharedService: Sharedatabetweencompo
         public: false
       },
       {
-        name: "Testing",
-        path: "/testing",
-        icon: "bx bx-code-alt",
-        public: false
-      },
-      {
        name: "Admin",
        path: "/administration",
-       icon: "bx bxs-bell",
+       icon: "fa-solid fa-unlock-keyhole",
        public: false
       },
       //{
@@ -122,6 +116,6 @@ constructor(private router: Router, private sharedService: Sharedatabetweencompo
       //},
     ];
   }
-  devids = ["147456736"]
+  devids = ["147456736","231857267"]
   twitchid = localStorage.getItem("channelID") || "{}";
 }

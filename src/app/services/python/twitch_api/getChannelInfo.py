@@ -7,10 +7,9 @@ def get_user_info(access_token):
     api_url = 'https://api.twitch.tv/helix/users'
 
     # Twitch API headers with the OAuth token
-    headers = {
-        'Client-ID': conf.CLIENT_ID,  # Replace with your Twitch client ID
-        'Authorization': f'Bearer {access_token}',
-    }
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = "Bearer " + access_token
+    headers["Client-Id"] = conf.CLIENT_ID
         # Make a GET request to the Twitch API to get user information
     response = requests.get(api_url, headers=headers)
     response_data = response.json()
@@ -76,3 +75,17 @@ def getGlobalEmotes(oauth_token: str):
     else:
         data = resp.json()["data"]
         return data
+    
+def getchannelinfobyname(oauth_token: str, username: str):
+    headers = CaseInsensitiveDict()
+    headers["Authorization"] = "Bearer " + oauth_token
+    headers["Client-Id"] = conf.CLIENT_ID
+    user_url = f'https://api.twitch.tv/helix/users?login={username}'
+    user_response = requests.get(user_url, headers=headers)
+    user_data = user_response.json()
+
+    # Gib die Benutzer-ID aus
+    if 'data' in user_data and len(user_data['data']) > 0:
+        return user_data
+    else:
+        return None

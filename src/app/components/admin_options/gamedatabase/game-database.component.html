@@ -9,6 +9,8 @@
     [rows]="100"
     [scrollable]="true" 
     [loading]="loadtable"
+    selectionMode="single" 
+    [(selection)]="selectedgame"
     scrollHeight="1000px" 
     [globalFilterFields]="['ID']"
     [showCurrentPageReport]="true"
@@ -35,7 +37,7 @@
                                 <input 
                                     pInputText 
                                     type="text" 
-                                    [(ngModel)]="games.Anwendung" />
+                                    [(ngModel)]="games.Anwendung"/>
                             </ng-template>
                             <ng-template pTemplate="output">
                                 {{ games.Anwendung }}

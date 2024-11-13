@@ -15,7 +15,7 @@ changetoapp(path: string){
 }
 
 twitchid = this.localData.getData("channelID") || "{}";
-devids = ["147456736"]
+devids = ["147456736", "231857267"]
 
 cardItems: any =[{
   functionname: "Autobot",

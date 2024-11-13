@@ -33,11 +33,10 @@ import { SplitterModule } from 'primeng/splitter';
 import { ScrollerModule } from 'primeng/scroller';
 import { ImageModule } from 'primeng/image';
 import { AdminsiteComponent } from './components/adminsite/adminsite.component';
-import { GameDatabaseComponent } from './components/admin/gamedatabase/game-database.component';
+import { GameDatabaseComponent } from './components/admin_options/gamedatabase/game-database.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
-
-
+import { UsermanagmentComponent } from './components/admin_options/usermanagment/usermanagment.component';
 
 
 
@@ -58,11 +57,13 @@ import { TwitchChatComponent } from './components/functions/twitch/twitchchat/tw
     AutobotComponent,
     AdminsiteComponent,
     GameDatabaseComponent,
+    UsermanagmentComponent,
     
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    AccordionModule,
     SplitterModule,
     ToastModule,
     ScrollerModule,

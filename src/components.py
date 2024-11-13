@@ -10,4 +10,5 @@ from src.app.components.functions.twitch.autobot import autobot_component
 from src.app import app_component
 from src.app.components.functions.twitch.twitchchat import twitch_chat_component
 # from src.app import app_component
-from src.app.components.admin.gamedatabase import game_database_component
+from src.app.components.admin_options.gamedatabase import game_database_component
+from src.app.components.admin_options.usermanagment import usermanagment

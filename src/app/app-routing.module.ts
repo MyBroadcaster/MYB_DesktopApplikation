@@ -9,12 +9,14 @@ import { AppsComponent } from './components/menu/apps/apps.component';
 import { AnalyticsComponent } from './components/menu/analytics/analytics.component';
 import { AutobotComponent } from './components/functions/twitch/autobot/autobot.component';
 import { AdminsiteComponent } from './components/adminsite/adminsite.component';
-import { GameDatabaseComponent } from './components/admin/gamedatabase/game-database.component';
+import { GameDatabaseComponent } from './components/admin_options/gamedatabase/game-database.component';
+import { UsermanagmentComponent } from './components/admin_options/usermanagment/usermanagment.component';
 import { TwitchChatComponent } from './components/functions/twitch/twitchchat/twitch-chat.component';
 
 const routes: Routes = [
   {path: "testing" ,component: TestingComponent},
   {path: "dashboard" ,component: DashboardComponent},
+  {path: "usermanagment", component: UsermanagmentComponent},
   {path: "myAccount" ,component: AccountSettingsComponent},
   {path: "appSettings" ,component: AppSettingsComponent},
   {path: "apps" ,component: AppsComponent},

@@ -11,7 +11,7 @@ export class AdminsiteComponent {
 
 
 
-  navigate(){
-    this.router.navigate(["/gamedatabase"])
+  navigate(url: string){
+    this.router.navigate([url])
   }
 }
