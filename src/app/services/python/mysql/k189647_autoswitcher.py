@@ -30,6 +30,7 @@ def getDataByEXE(item):
     return result
 
 def addnewData(item):
+    print(item)
     connect = autobot_dbconnect()
     cursor = connect.cursor()
     query = """

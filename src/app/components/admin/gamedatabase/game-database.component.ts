@@ -20,6 +20,7 @@ export class GameDatabaseComponent implements OnInit{
   scanprocess: boolean = false;
   processes: any[]|undefined;
   btnloadscan = false
+  loadbtn: boolean = false
   constructor(private router: Router, private messageService: MessageService) {}
 
   games : any
@@ -28,6 +29,7 @@ export class GameDatabaseComponent implements OnInit{
   }
 
   async scanprocessstart() {
+    this.loadbtn = true
     this.processes = []
     if (this.scanprocess == false){
       this.btnloadscan = true
@@ -37,11 +39,12 @@ export class GameDatabaseComponent implements OnInit{
     else {
       this.scanprocess = false
     }
+    this.loadbtn = false
   }
   async autoBotDb(){
     this.loadtable = true;
     let apps = await eel.getgames("")();
-    this.header = ["ID", "Executable", "Anwendung", "Kategorie","Window",""]
+    this.header = ["ID", "Anwendung", "Executable", "Kategorie","Window",""]
     this.games = apps
     this.listarray_leng = apps.length
     console.log(this.games)
@@ -73,6 +76,7 @@ export class GameDatabaseComponent implements OnInit{
   }
 
   async addnewgame(){
+    console.log(this.new_game)
     let apps = await eel.addnewgame(this.new_game)();
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Datensatz erfolgreich erstellt' });
     this.new_game = { title: "", executable:"", category: "", window:  ""}

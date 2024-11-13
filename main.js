@@ -38,7 +38,6 @@ function createWindow() {
       win.webContents.openDevTools();
       win.loadURL(`http://localhost:${angularDevServerPort}`);
     } else {
-     win.webContents.openDevTools();
       win.loadURL(`http://localhost:8000`);
     }
   });

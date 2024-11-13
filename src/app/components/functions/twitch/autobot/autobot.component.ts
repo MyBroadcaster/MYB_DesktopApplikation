@@ -17,6 +17,7 @@ import { MessageService } from 'primeng/api';
 })
 export class AutobotComponent implements OnInit {
 categorytitle: any;
+steaminfo: any;
   constructor(private sharedService: SharedatabetweencomponentsService) { }
   appImage: string = "";
   deactivatebtn = false;
@@ -46,12 +47,13 @@ categorytitle: any;
 
 // Expose the function to Python with eel
 eel.expose(updateInformations);
-function updateInformations(image: string, gametitle: string) {
+function updateInformations(image: string, gametitle: string, descript: string = "") {
   let appimg = <HTMLImageElement>document.getElementById("appImage");
   appimg.src = image;
   gamemeta.image = image
   gamemeta.title = gametitle
   let title = <HTMLHeadingElement>document.getElementById("appname");
-  console.log(gametitle)
   title.innerText = gametitle
+  let description = <HTMLHeadingElement>document.getElementById("appdescription");
+  description.innerText = descript
 }

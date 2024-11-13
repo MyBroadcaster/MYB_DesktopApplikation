@@ -6,7 +6,7 @@ from src.app.services.python.system import scan_blacklist as blacklist
 from src.app.services.python.twitch_api.getChannelInfo import getCategoryByName
 from src.app.services.python.twitch_api.updateChannelInfo import category_switch
 from src.app.services.python.twitch_api.getChannelInfo import getChannelInformations
-
+from src.app.services.python.api.steam import steaminfo
 exit_event = threading.Event()
 defaultcategory = ""
 deactivatebtn = False
@@ -67,9 +67,14 @@ def autobot(twitchID:str, oauthtoken: str):
                     else:
                         activecategory = data[0][3]
                         game = getCategoryByName(oauth_token=oauthtoken,categoryName=data[0][3])
+                        desc = steaminfo(game[0]["name"])
                         img = game[0]["box_art_url"].replace("-{width}x{height}", "")
-                        eel.updateInformations(img, game[0]["name"])
-                        #eel.autobotdataset(img)
+                        try:
+                            desc = desc[0]["description"]
+                            eel.updateInformations(img, game[0]["name"],desc)
+                        except:
+                            eel.updateInformations(img, game[0]["name"])
+                        eel.setautobotinfos(img, game[0]["name"])
                         category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=game[0]["id"])
                         
         
@@ -77,13 +82,17 @@ def autobot(twitchID:str, oauthtoken: str):
             if activecategory != defaultcategory:
                 activecategory = defaultcategory
                 game = getCategoryByName(oauth_token=oauthtoken,categoryName=defaultcategory)
+                desc = steaminfo(game[0]["name"])
                 img = game[0]["box_art_url"].replace("-{width}x{height}", "")
-                eel.updateInformations(img, game[0]["name"])
-                #eel.autobotdataset(img)
+                try:
+                    desc = desc[0]["description"]
+                    eel.updateInformations(img, game[0]["name"],desc)
+                except:
+                    eel.updateInformations(img, game[0]["name"])
+                eel.setautobotinfos(img, game[0]["name"])
                 category_switch(twitchId=twitchID, oauth_token=oauthtoken, game_id=game[0]["id"])
         
         if exit_event.is_set():
-            print("close")
             deactivatebtn = False
             exit_event.clear()
             break

@@ -102,10 +102,10 @@
         <p-dropdown 
         [options]="processes" 
         [(ngModel)]="new_game.executable" 
-        placeholder="Select a City" />
+        placeholder="Select a Executbale" />
     
     </ng-template>
-    <button pButton icon="fa-brands fa-nfc-symbol" (click)="scanprocessstart()"></button>
+    <button pButton [loading]="loadbtn" icon="fa-brands fa-nfc-symbol" (click)="scanprocessstart()"></button>
     <input pInputText placeholder="Window"[(ngModel)]="new_game.window">
     <button pButton label="Upload" (click)="addnewgame()"></button>
 </div>
