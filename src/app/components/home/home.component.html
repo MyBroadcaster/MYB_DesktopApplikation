@@ -1,1 +1,27 @@
-<h1>Home Component</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="http://localhost:8000/eel.js"></script>
+    </head>
+    <header>
+    </header>
+    <body>
+       <div class="bg-background"></div>
+       <ng-template [ngIf]="blured" [ngIfElse]="noblured">
+        <video style="filter: blur(6px);transform: scale(1.1); " src="{{backgroundmedia}}"  poster="{{backgroundmedia_alternative}}" autoplay loop playsinline muted></video>
+        </ng-template>
+       <ng-template #noblured>
+        <video src="{{backgroundmedia}}"  poster="{{backgroundmedia_alternative}}" autoplay loop playsinline muted></video>
+      </ng-template>
+        <div class="bg-content">
+    <div>
+        <img id="logo" src="https://mybroadcaster.de/wp-content/uploads/2022/12/Yellow_Illustration_Cute_Astronaut_Cartoon_Logo.png">
+        <div id="center">
+        <p-button [loading]="loading" (onClick)="twitchlogin()" id="tw_login_btn" label="Twitch Login" icon="fa-brands fa-twitch fa-lg"></p-button>
+    </div>
+    <p>{{hello_a}}</p>
+    </div>
+</div>
+    </body>
+</html>
+

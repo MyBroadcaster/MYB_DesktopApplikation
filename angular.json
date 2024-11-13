@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "optimization": false,
+            "outputHashing": "none",
             "outputPath": "dist/angular-eel",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,17 +32,34 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/styles.scss",
+              {"input": "src/app/themes/test_theme.css",
+              "bundleName": "test_theme",
+              "inject": false},
+              {"input": "src/app/themes/default.css",
+              "bundleName": "default",
+              "inject": false},
+              {"input": "src/app/themes/theme_test.css",
+              "bundleName": "dark_mode",
+              "inject": false},
+              {"input": "src/app/themes/rangelrudi.css",
+              "bundleName": "rangelrudi",
+              "inject": false},
+              {"input": "src/app/themes/dreaon_theme.css",
+              "bundleName": "dreaon_theme",
+              "inject": false}
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -48,7 +67,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,
@@ -93,12 +112,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

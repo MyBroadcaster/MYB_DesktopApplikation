@@ -1,0 +1,40 @@
+// Header
+#twitch-pfp{
+    width: 96px;
+    border-radius: 90px;
+  }
+  
+  .twitch-name {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  // Content
+  .nav-title {
+    color: #dadada;
+    margin: 40px 0 18px;
+  }
+  
+  ul {
+    padding: 0 16px;
+  }
+  
+  .nav-item {
+    cursor: pointer;
+    color: #fff;
+    list-style-type: none;
+    height: 56px;
+    margin: 8px 0;
+  
+  }
+  
+  .nav-item i {
+    font-size: 26px;
+  }
+  
+  .nav-item span {
+    font-size: 18px;
+    margin-left: 8px;
+  }
+  

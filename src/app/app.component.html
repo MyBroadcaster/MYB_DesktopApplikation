@@ -1,1 +1,21 @@
-<app-home></app-home>
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+     <body>
+
+        <header>
+            <app-titlebar></app-titlebar>
+        </header>
+        <div id="main">
+            <div id="sidebar">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div id="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+      </body>
+</html>
+<p-toast></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>

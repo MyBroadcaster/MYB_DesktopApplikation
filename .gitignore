@@ -2,9 +2,11 @@
 
 # Compiled output
 /dist
+/build
 /tmp
 /out-tsc
 /bazel-out
+/release
 
 # Node
 /node_modules
@@ -15,10 +17,14 @@ yarn-error.log
 .idea/
 .project
 .classpath
+.venv
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
+
+#Python
+__pycache__
 
 # Visual Studio Code
 .vscode/*

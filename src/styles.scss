@@ -1,1 +1,186 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-eel-primary: mat.define-palette(mat.$indigo-palette);
+$angular-eel-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$angular-eel-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$angular-eel-theme: mat.define-light-theme((
+  color: (
+    primary: $angular-eel-primary,
+    accent: $angular-eel-accent,
+    warn: $angular-eel-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($angular-eel-theme);
+
 /* You can add global styles to this file, and also import other style files */
+@import "app/themes/default.css";
+@import "primeng/resources/primeng.css";
+@import 'node_modules/primeflex/primeflex.css';
+@import "primeicons/primeicons.css";
+
+html,body {height: 100%; margin: 0px; padding: 0px; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+#tw_login_btn .p-button{
+  background-color: #8f15cb !important;
+  -webkit-box-shadow: 1px 5px 15px 1px #000000;
+box-shadow: 1px 5px 15px 1px #000000;
+border: 0;
+}
+
+#tw_login_btn .p-button:hover{
+  background-color: #6507a0 !important;
+-webkit-box-shadow: inset 1px 5px 15px 1px #000000;
+box-shadow: inset 1px 5px 15px 1px #000000;
+}
+
+#profilbtn .p-button{
+  margin-top: 10px;
+  background-color: transparent !important;
+  border:0;
+  .p-button-label{
+    color: white;
+    font-size: 30px;
+  }
+  .p-button-icon{
+    color: white;
+  }
+  :hover{
+    text-decoration:underline;
+  }
+}
+
+#main{
+  margin-top: 200px;
+}
+// PrimeNG Component Styles
+.p-sidebar {
+  &.prime-sidebar {
+    &.p-sidebar-left {
+      &.sidebar-collapsed {
+        width: 6.5rem;
+      }
+    }
+    .p-sidebar-header {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    &.sidebar-collapsed {
+      .p-sidebar-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: visible;
+      }
+
+      .p-sidebar-header {
+        margin-top: 30px;
+      }
+    }
+    .p-sidebar-content {
+      padding: 0 30px;
+    }
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(10, 10, 10, .65);
+    box-shadow: 0 8px 32px rgb(2, 4, 24);
+    border-right: 2px solid rgba(255, 255, 255, .09);
+    z-index: 2 !important;
+  }
+}
+
+#title-btn .p-button{
+  background-color: white;
+  opacity: 0.5;
+  height: 30px;
+  width: 30px;
+  margin-top: 4px;
+  margin-right: 0px;
+  border-radius: 0px;
+  border: 0;
+}
+
+#title-btn .p-button:hover{
+  background-color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+}
+
+.p-divider {
+  &.sidebar-divider {
+    &.p-divider-horizontal {
+      margin: 40px 0 50px;
+    }
+    &.p-divider-horizontal:before {
+      border-top-color: rgba(255, 255, 255, .1);
+      border-width: 2px;
+      border-radius: 3px;
+      margin: 0;
+    }
+  }
+}
+
+#appfeature_twcard .p-card{
+  border-radius: 10px;
+  background-size: contain;
+  height: 130px;
+  background-size: 50%;
+  background-position: 110%;
+  background-repeat: no-repeat;
+  background-color: #6441A5;
+  border:grey solid 1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#appfeature_twcard .p-card:hover{
+  background-color: rgb(42, 8, 69);
+  border:grey solid 2px;
+  box-shadow: rgba(36, 1, 60, 0.25) 0px 54px 55px, rgba(36, 1, 60, 0.25) 0px -12px 30px, rgba(36, 1, 60, 0.25) 0px 4px 6px, rgba(36, 1, 60, 0.25) 0px 12px 13px, rgba(36, 1, 60, 0.25) 0px -3px 5px;
+}
+.control .p-button{
+  margin-right: 10px;
+}
+
+#youtubecard .p-card{
+  margin-top: 20px;
+}
+
+#appfeature_ytcard .p-card{
+  background-size: contain;
+  background-size: 50%;
+  background-position: 110%;
+  background-repeat: no-repeat;
+  background-color: #FF0000;
+}
+
+.autobot .p-card{
+  background-image: url("https://static-cdn.jtvnw.net/ttv-boxart/509658-285x380.jpg");
+}
+.giveaway .p-card{
+  background-image: url("https://t4.ftcdn.net/jpg/05/54/90/27/360_F_554902788_lDIYwWxjyckmx4EoKlmAQ2Qdp6YYitse.png");
+}
+.raid_gallery .p-card{
+  background-image: url("https://raw.githubusercontent.com/Durss/streamerRaider/master/public/discordBot_icon.png");
+}
+
+.twitch_chat .p-card{
+  background-image: url("https://raw.githubusercontent.com/filipesabella/twitch-chat-cleaner/master/despair.png");
+}

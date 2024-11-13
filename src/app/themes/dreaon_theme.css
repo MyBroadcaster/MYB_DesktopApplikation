@@ -1,0 +1,9 @@
+@import "primeng/resources/themes/md-dark-deeppurple/theme.css";
+
+body{
+    background-image: url("https://media.discordapp.net/attachments/269142457600573440/805843432572321822/Untitled181_20210201195517.png?ex=655254ae&is=653fdfae&hm=05eacec6e73b447bee255365fc831ceff6deb2a972b33ca0421a467bfe9052d8&=&width=904&height=904");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 110% 110%;
+    background-size: 30%;
+}
